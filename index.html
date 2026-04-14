@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AndyHQ – Apps by Andy | Indie Developer</title>
+  <meta name="description" content="AndyHQ is the home of indie apps built by Andy. Overtime Live is a real-time shift and overtime tracker for iOS and Android. Sun Hours is a free solar panel kWh calculator." />
+  <meta name="author" content="Andy – AndyHQ" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://beearmy.github.io/" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="AndyHQ – Apps by Andy" />
+  <meta property="og:description" content="Indie apps built by a shift worker, for shift workers — and more. Home of Overtime Live and Sun Hours." />
+  <meta property="og:url" content="https://beearmy.github.io/" />
+
+  <!-- JSON-LD Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Person",
+        "name": "Andy",
+        "url": "https://beearmy.github.io",
+        "sameAs": [
+          "https://github.com/beearmy",
+          "https://overtimelive.app"
+        ],
+        "knowsAbout": ["iOS development", "Android development", "Flutter", "Shift work apps", "Solar energy tools"]
+      },
+      {
+        "@type": "WebSite",
+        "name": "AndyHQ",
+        "url": "https://beearmy.github.io",
+        "description": "Indie developer portfolio — Overtime Live shift tracker and Sun Hours solar panel kWh calculator."
+      },
+      {
+        "@type": "SoftwareApplication",
+        "name": "Overtime Live",
+        "url": "https://overtimelive.app",
+        "applicationCategory": "LifestyleApplication",
+        "operatingSystem": "iOS, Android",
+        "description": "Real-time overtime and shift tracking app for shift workers. Tracks earnings second by second with gamified goals and live lock screen widgets.",
+        "author": { "@type": "Person", "name": "Andy" }
+      }
+    ]
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Syne:wght@700;800&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg: #0a0b0f;
+      --bg2: #111318;
+      --card: #15171e;
+      --border: #1f2230;
+      --accent: #00e5a0;
+      --accent2: #ff6b35;
+      --text: #e8eaf0;
+      --muted: #6b7280;
+      --dim: #3d4250;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* Grid noise texture overlay */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(0,229,160,0.015) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,229,160,0.015) 1px, transparent 1px);
+      background-size: 40px 40px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Glow blob */
+    body::after {
+      content: '';
+      position: fixed;
+      top: -200px;
+      right: -200px;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(0,229,160,0.07) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .container {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 0 24px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ── HEADER ── */
+    header {
+      padding: 60px 0 40px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .logo-mark {
+      width: 44px;
+      height: 44px;
+      background: var(--accent);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .logo-mark span {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 18px;
+      color: var(--bg);
+      letter-spacing: -1px;
+    }
+
+    .logo-text {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 22px;
+      letter-spacing: -0.5px;
+      color: var(--text);
+    }
+
+    .logo-text span {
+      color: var(--accent);
+    }
+
+    /* ── HERO ── */
+    .hero {
+      padding: 20px 0 60px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(0,229,160,0.08);
+      border: 1px solid rgba(0,229,160,0.2);
+      border-radius: 100px;
+      padding: 4px 12px;
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      color: var(--accent);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+
+    .hero-tag::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      background: var(--accent);
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.8); }
+    }
+
+    h1 {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: clamp(2rem, 5vw, 2.8rem);
+      line-height: 1.1;
+      letter-spacing: -1.5px;
+      color: var(--text);
+      margin-bottom: 20px;
+    }
+
+    h1 em {
+      font-style: normal;
+      color: var(--accent);
+    }
+
+    .hero p {
+      font-size: 17px;
+      color: var(--muted);
+      max-width: 520px;
+      line-height: 1.7;
+    }
+
+    /* ── APPS SECTION ── */
+    .apps {
+      padding: 56px 0;
+    }
+
+    .section-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      color: var(--dim);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 28px;
+    }
+
+    .app-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 32px;
+      margin-bottom: 20px;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: border-color 0.2s, transform 0.2s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .app-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(0,229,160,0.03) 0%, transparent 60%);
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+
+    .app-card:hover {
+      border-color: rgba(0,229,160,0.3);
+      transform: translateY(-2px);
+    }
+
+    .app-card:hover::before {
+      opacity: 1;
+    }
+
+    .app-card.solar:hover {
+      border-color: rgba(255,107,53,0.3);
+    }
+
+    .app-card.solar::before {
+      background: linear-gradient(135deg, rgba(255,107,53,0.03) 0%, transparent 60%);
+    }
+
+    .app-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      margin-bottom: 16px;
+      gap: 16px;
+    }
+
+    .app-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      flex-shrink: 0;
+    }
+
+    .app-icon.green { background: rgba(0,229,160,0.12); }
+    .app-icon.orange { background: rgba(255,107,53,0.12); }
+
+    .app-arrow {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--dim);
+      transition: color 0.2s, border-color 0.2s;
+      flex-shrink: 0;
+    }
+
+    .app-card:hover .app-arrow {
+      color: var(--accent);
+      border-color: rgba(0,229,160,0.3);
+    }
+
+    .app-card.solar:hover .app-arrow {
+      color: var(--accent2);
+      border-color: rgba(255,107,53,0.3);
+    }
+
+    .app-card h2 {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 1.2rem;
+      letter-spacing: -0.3px;
+      margin-bottom: 8px;
+    }
+
+    .app-card p {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .tag {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      padding: 4px 10px;
+      border-radius: 6px;
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      color: var(--muted);
+      letter-spacing: 0.03em;
+    }
+
+    .tag.accent { color: var(--accent); border-color: rgba(0,229,160,0.2); background: rgba(0,229,160,0.06); }
+    .tag.orange { color: var(--accent2); border-color: rgba(255,107,53,0.2); background: rgba(255,107,53,0.06); }
+
+    /* ── STAT ROW ── */
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      overflow: hidden;
+      margin: 48px 0;
+    }
+
+    .stat {
+      background: var(--card);
+      padding: 24px 20px;
+      text-align: center;
+    }
+
+    .stat-num {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 1.6rem;
+      color: var(--text);
+      letter-spacing: -1px;
+      display: block;
+    }
+
+    .stat-num.green { color: var(--accent); }
+    .stat-num.orange { color: var(--accent2); }
+
+    .stat-label {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+
+    /* ── ABOUT ── */
+    .about {
+      padding: 48px 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .about h3 {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 1.1rem;
+      margin-bottom: 14px;
+    }
+
+    .about p {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.75;
+      margin-bottom: 14px;
+    }
+
+    .about a {
+      color: var(--accent);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(0,229,160,0.3);
+      transition: border-color 0.15s;
+    }
+
+    .about a:hover { border-bottom-color: var(--accent); }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 32px 0 48px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: gap;
+      gap: 12px;
+    }
+
+    footer p {
+      font-family: 'DM Mono', monospace;
+      font-size: 12px;
+      color: var(--dim);
+    }
+
+    footer a {
+      color: var(--dim);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+
+    footer a:hover { color: var(--accent); }
+
+    /* ── ANIMATIONS ── */
+    .fade-in {
+      animation: fadeUp 0.5s ease both;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .delay-1 { animation-delay: 0.1s; }
+    .delay-2 { animation-delay: 0.2s; }
+    .delay-3 { animation-delay: 0.3s; }
+    .delay-4 { animation-delay: 0.4s; }
+
+    @media (max-width: 480px) {
+      header { padding: 40px 0 24px; }
+      .hero { padding: 16px 0 40px; }
+      .app-card { padding: 24px; }
+      .stats-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <header class="fade-in">
+    <div class="logo-mark"><span>A</span></div>
+    <div class="logo-text">Andy<span>HQ</span></div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-tag fade-in delay-1">Indie Developer · UK</div>
+    <h1 class="fade-in delay-2">Apps built for <em>real people</em> doing real work.</h1>
+    <p class="fade-in delay-3">I build focused, no-nonsense tools for shift workers and everyday life. No subscriptions. No dark patterns. Just apps that do exactly what they say.</p>
+  </section>
+
+  <section class="apps fade-in delay-4">
+    <p class="section-label">Projects</p>
+
+    <!-- Overtime Live -->
+    <a href="https://overtimelive.app" class="app-card" rel="noopener">
+      <div class="app-header">
+        <div class="app-icon green">⏱</div>
+        <div class="app-arrow">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2.5 11.5L11.5 2.5M11.5 2.5H5M11.5 2.5V9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+      </div>
+      <h2>Overtime Live – Real-Time Shift Tracker</h2>
+      <p>Track your overtime earnings second by second. Built for NHS staff, police, logistics drivers, and anyone who works shifts. Live lock screen widgets, gamified goals, shift patterns, and a salary calculator — all free, no account needed.</p>
+      <div class="tags">
+        <span class="tag accent">iOS &amp; Android</span>
+        <span class="tag">Free</span>
+        <span class="tag">Shift Workers</span>
+        <span class="tag">Live Earnings</span>
+        <span class="tag">overtimelive.app</span>
+      </div>
+    </a>
+
+    <!-- Sun Hours -->
+    <a href="https://sun-hours.netlify.app" class="app-card solar" rel="noopener">
+      <div class="app-header">
+        <div class="app-icon orange">☀️</div>
+        <div class="app-arrow">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2.5 11.5L11.5 2.5M11.5 2.5H5M11.5 2.5V9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+      </div>
+      <h2>Sun Hours – Solar Panel kWh Calculator</h2>
+      <p>Free solar energy calculator that estimates real-world kWh output from your solar panels based on your location, panel size, and system efficiency. Built for homeowners making sense of their solar investment.</p>
+      <div class="tags">
+        <span class="tag orange">Solar Energy</span>
+        <span class="tag">Free Tool</span>
+        <span class="tag">kWh Calculator</span>
+        <span class="tag">UK Homeowners</span>
+      </div>
+    </a>
+
+  </section>
+
+  <div class="stats-row fade-in">
+    <div class="stat">
+      <span class="stat-num green">2</span>
+      <p class="stat-label">Live apps</p>
+    </div>
+    <div class="stat">
+      <span class="stat-num">iOS+<br>Android</span>
+      <p class="stat-label">Platforms</p>
+    </div>
+    <div class="stat">
+      <span class="stat-num orange">Free</span>
+      <p class="stat-label">Always</p>
+    </div>
+  </div>
+
+  <section class="about fade-in">
+    <h3>About AndyHQ</h3>
+    <p>
+      AndyHQ is the solo indie studio behind <a href="https://overtimelive.app">Overtime Live</a>, a free real-time overtime tracking app for shift workers on iOS and Android. Overtime Live was built because over 85% of UK shift workers still track overtime manually — with spreadsheets or paper.
+    </p>
+    <p>
+      The studio also builds free web tools including the <a href="https://sun-hours.netlify.app">Sun Hours solar panel kWh calculator</a>, designed for homeowners who want to understand their solar system's real-world output without paying for a professional estimate.
+    </p>
+    <p>
+      All tools are built with a simple principle: solve one problem, solve it well, and keep it free.
+    </p>
+  </section>
+
+  <footer>
+    <p>© 2025 AndyHQ · <a href="https://github.com/beearmy">github.com/beearmy</a></p>
+    <p><a href="https://overtimelive.app">overtimelive.app</a></p>
+  </footer>
+
+</div>
+
+</body>
+</html>
