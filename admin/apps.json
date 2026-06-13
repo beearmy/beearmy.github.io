@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-13T11:26:47Z",
+  "generated_at": "2026-06-13T11:53:28Z",
   "source": "app-store-connect-api",
   "team_id": "69a6de81-5abb-47e3-e053-5b8c7c11a4d1",
   "apps": [
@@ -54,7 +54,7 @@
       "priority": 2,
       "next_action": "iOS 27 testing next",
       "asc_app_id": "6773940001",
-      "android_package": null,
+      "android_package": "uk.andyhq.sunhours",
       "testflight_url": "https://appstoreconnect.apple.com/teams/69a6de81-5abb-47e3-e053-5b8c7c11a4d1/apps/6773940001/testflight/ios/692af576-8518-4583-80a8-3ddeab3f5e75",
       "store_url": "https://apps.apple.com/app/id6773940001",
       "channels": {
