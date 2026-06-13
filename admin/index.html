@@ -140,6 +140,31 @@ function collect(){
   });
   return {updated_at:new Date().toISOString(),updated_by:"admin-page",apps};
 }
+// ---- Token storage: encrypted at rest with a non-extractable Web Crypto key ----
+// The AES key lives in IndexedDB and cannot be exported by JS, so the token is never
+// readable in plain text (localStorage/DevTools) and the key can't be copied off device.
+function idb(){return new Promise((res,rej)=>{const r=indexedDB.open('andyhq',1);
+  r.onupgradeneeded=()=>r.result.createObjectStore('keys');r.onsuccess=()=>res(r.result);r.onerror=()=>rej(r.error);});}
+async function cryptoKey(){const db=await idb();
+  const existing=await new Promise((res,rej)=>{const t=db.transaction('keys','readonly').objectStore('keys').get('tok');t.onsuccess=()=>res(t.result);t.onerror=()=>rej(t.error);});
+  if(existing)return existing;
+  const k=await crypto.subtle.generateKey({name:'AES-GCM',length:256},false,['encrypt','decrypt']);
+  await new Promise((res,rej)=>{const t=db.transaction('keys','readwrite').objectStore('keys').put(k,'tok');t.onsuccess=()=>res();t.onerror=()=>rej(t.error);});
+  return k;}
+const ENC_KEY="andyhq_gh_token_enc";
+async function setToken(tok){const key=await cryptoKey();const iv=crypto.getRandomValues(new Uint8Array(12));
+  const ct=new Uint8Array(await crypto.subtle.encrypt({name:'AES-GCM',iv},key,new TextEncoder().encode(tok)));
+  localStorage.setItem(ENC_KEY,JSON.stringify({iv:btoa(String.fromCharCode(...iv)),ct:btoa(String.fromCharCode(...ct))}));
+  localStorage.removeItem(TOKEN_KEY);}
+async function decTok(){const raw=localStorage.getItem(ENC_KEY);if(!raw)return null;
+  try{const key=await cryptoKey();const b=JSON.parse(raw);
+    const iv=Uint8Array.from(atob(b.iv),c=>c.charCodeAt(0));const ct=Uint8Array.from(atob(b.ct),c=>c.charCodeAt(0));
+    return new TextDecoder().decode(await crypto.subtle.decrypt({name:'AES-GCM',iv},key,ct));}catch(e){return null;}}
+async function getToken(){const old=localStorage.getItem(TOKEN_KEY);if(old){await setToken(old.trim());}  // migrate any plain-text token
+  return await decTok();}
+async function clearToken(){localStorage.removeItem(ENC_KEY);localStorage.removeItem(TOKEN_KEY);
+  try{const db=await idb();await new Promise(r=>{const t=db.transaction('keys','readwrite').objectStore('keys').delete('tok');t.onsuccess=()=>r();t.onerror=()=>r();});}catch(e){}}
+
 async function ghCommit(token,obj){
   const url=`https://api.github.com/repos/${REPO}/contents/${OV_PATH}`;
   let sha;
@@ -153,12 +178,12 @@ async function ghCommit(token,obj){
 async function save(){
   const obj=collect();
   OVERRIDES=obj; localStorage.setItem(LS_DATA,JSON.stringify({DATA,OVERRIDES}));
-  let token=localStorage.getItem(TOKEN_KEY);
-  if(!token){token=prompt("Paste a GitHub token with contents:write on "+REPO+".\nIt is stored only in this browser, never on the page.");
-    if(token)localStorage.setItem(TOKEN_KEY,token.trim());}
+  let token=await getToken();
+  if(!token){const v=prompt("Paste a GitHub token with contents:write on "+REPO+".\nIt is encrypted and stored only in this browser, never on the page or repo.");
+    if(v){token=v.trim();await setToken(token);}}
   if(!token){toast("Saved to this browser only (no token). Edits won't sync until you add a token.");setEditing(false);return;}
   document.getElementById('save').disabled=true;
-  try{await ghCommit(token.trim(),obj);toast("Saved ✓ committed to repo — Claude can read it now.");}
+  try{await ghCommit(token,obj);toast("Saved ✓ committed to repo — Claude can read it now.");}
   catch(e){toast("Saved locally; repo save failed: "+e.message,5000);}
   document.getElementById('save').disabled=false;setEditing(false);
 }
@@ -180,11 +205,11 @@ async function load(){
 document.getElementById('edit').onclick=()=>setEditing(true);
 document.getElementById('cancel').onclick=()=>setEditing(false);
 document.getElementById('save').onclick=save;
-document.getElementById('settings').onclick=()=>{
-  const cur=localStorage.getItem(TOKEN_KEY)?"(a token is set)":"(no token set)";
-  const v=prompt("GitHub token "+cur+". Paste to set, type CLEAR to remove, or Cancel.\nStored only in this browser.");
-  if(v===null)return; if(v.trim().toUpperCase()==="CLEAR"){localStorage.removeItem(TOKEN_KEY);toast("Token cleared.");}
-  else if(v.trim()){localStorage.setItem(TOKEN_KEY,v.trim());toast("Token saved on this device.");}
+document.getElementById('settings').onclick=async()=>{
+  const has=await getToken();
+  const v=prompt("GitHub token "+(has?"(a token is set)":"(no token set)")+". Paste to set, type CLEAR to remove, or Cancel.\nEncrypted, stored only in this browser.");
+  if(v===null)return; if(v.trim().toUpperCase()==="CLEAR"){await clearToken();toast("Token cleared.");}
+  else if(v.trim()){await setToken(v.trim());toast("Token saved (encrypted) on this device.");}
 };
 load();
 </script></body></html>
