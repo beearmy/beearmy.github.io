@@ -1,0 +1,149 @@
+{
+  "generated_at": "2026-06-13T11:26:47Z",
+  "source": "app-store-connect-api",
+  "team_id": "69a6de81-5abb-47e3-e053-5b8c7c11a4d1",
+  "apps": [
+    {
+      "id": "overtime-live",
+      "name": "Overtime Live \u2014 Shift Tracker",
+      "platforms": [
+        "ios",
+        "android"
+      ],
+      "priority": 1,
+      "next_action": "Keep shipping; evaluate Apple Ads after promo",
+      "asc_app_id": "6755075589",
+      "android_package": "uk.andyhq.overtimelive",
+      "testflight_url": "https://appstoreconnect.apple.com/teams/69a6de81-5abb-47e3-e053-5b8c7c11a4d1/apps/6755075589/testflight/ios/90759b3b-3ecc-4bab-bb73-0499cb2d2f9b",
+      "store_url": "https://apps.apple.com/gb/app/overtime-live-shift-tracker/id6755075589",
+      "channels": {
+        "ios_live": {
+          "version": "3.0.1",
+          "build": "59",
+          "state": "live"
+        },
+        "ios_beta": {
+          "version": "3.0.9",
+          "build": "67",
+          "state": "testing"
+        },
+        "ios_internal": {
+          "version": "3.0.9",
+          "build": "67",
+          "state": "testing"
+        },
+        "android_live": {
+          "version": "3.0.0",
+          "build": "52",
+          "state": "live"
+        },
+        "android_beta": {
+          "version": "3.0.0",
+          "build": "52",
+          "state": "testing"
+        }
+      }
+    },
+    {
+      "id": "sun-hours",
+      "name": "Sun Hours for Solar Panels",
+      "platforms": [
+        "ios",
+        "android"
+      ],
+      "priority": 2,
+      "next_action": "iOS 27 testing next",
+      "asc_app_id": "6773940001",
+      "android_package": null,
+      "testflight_url": "https://appstoreconnect.apple.com/teams/69a6de81-5abb-47e3-e053-5b8c7c11a4d1/apps/6773940001/testflight/ios/692af576-8518-4583-80a8-3ddeab3f5e75",
+      "store_url": "https://apps.apple.com/app/id6773940001",
+      "channels": {
+        "ios_live": {
+          "version": "1.5",
+          "build": "43",
+          "state": "live"
+        },
+        "ios_beta": {
+          "version": "1.1.11",
+          "build": "43",
+          "state": "testing"
+        },
+        "ios_internal": {
+          "version": "1.1.11",
+          "build": "43",
+          "state": "testing"
+        },
+        "android_live": {
+          "version": "1.1.1",
+          "build": "26",
+          "state": "live"
+        },
+        "android_beta": {
+          "version": "1.1.11",
+          "build": "43",
+          "state": "testing"
+        }
+      }
+    },
+    {
+      "id": "landlord-assistant",
+      "name": "Landlord Assistant: Rent",
+      "platforms": [
+        "ios"
+      ],
+      "priority": 3,
+      "next_action": "Awaiting App Store review",
+      "asc_app_id": "6777530304",
+      "android_package": null,
+      "testflight_url": "https://appstoreconnect.apple.com/teams/69a6de81-5abb-47e3-e053-5b8c7c11a4d1/apps/6777530304/testflight/ios/65dff72b-6bc0-43d0-9829-453f4418af1b",
+      "store_url": "https://apps.apple.com/app/id6777530304",
+      "channels": {
+        "ios_live": {
+          "version": "1.0",
+          "build": "1",
+          "state": "waiting_for_review"
+        },
+        "ios_beta": {
+          "version": "1.0",
+          "build": "1",
+          "state": "testing"
+        },
+        "ios_internal": {
+          "version": "1.0",
+          "build": "1",
+          "state": "testing"
+        }
+      }
+    },
+    {
+      "id": "outflow",
+      "name": "Outflow: Subscription Tracker",
+      "platforms": [
+        "ios"
+      ],
+      "priority": 4,
+      "next_action": "Awaiting App Store review",
+      "asc_app_id": "6779691937",
+      "android_package": null,
+      "testflight_url": null,
+      "store_url": "https://apps.apple.com/app/id6779691937",
+      "channels": {
+        "ios_live": {
+          "version": "1.0",
+          "build": "3",
+          "state": "waiting_for_review"
+        },
+        "ios_beta": {
+          "version": "1.0",
+          "build": "3",
+          "state": "testing"
+        },
+        "ios_internal": {
+          "version": "1.0",
+          "build": "3",
+          "state": "testing"
+        }
+      }
+    }
+  ]
+}
