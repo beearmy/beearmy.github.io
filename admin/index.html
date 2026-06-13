@@ -76,6 +76,7 @@ footer{color:#9ca3af;font-size:12px;margin-top:8px;text-align:center}
 </header>
 <div class="summary" id="summary"></div>
 <div id="cards"></div>
+<div id="admob"></div>
 <div id="metrics"></div>
 <footer>AndyHQ admin · live data + your priorities/notes · <span id="foot"></span></footer>
 </div>
@@ -84,7 +85,7 @@ footer{color:#9ca3af;font-size:12px;margin-top:8px;text-align:center}
 const REPO="beearmy/beearmy.github.io", OV_PATH="admin/overrides.json", TOKEN_KEY="andyhq_gh_token", LS_DATA="andyhq_admin_last";
 const STATE_LABEL={live:"Live",testing:"Testing",waiting_for_review:"Waiting for Review",in_review:"In Review",pending_release:"Pending Release",rejected:"Rejected",prepare_for_submission:"Prepare for Submission",processing:"Processing"};
 const CH_ORDER=[["ios_live","iOS Live"],["ios_review","iOS Update In Review"],["ios_beta","iOS Beta (External)"],["ios_internal","iOS Internal"],["android_live","Android Live"],["android_beta","Android Beta"]];
-let DATA=null, OVERRIDES={apps:{}}, METRICS=null, editing=false;
+let DATA=null, OVERRIDES={apps:{}}, METRICS=null, ADMOB=null, editing=false;
 
 function toast(m,ms){const t=document.getElementById('toast');t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),ms||3000);}
 function badge(s){return `<span class="badge b-${s}">${STATE_LABEL[s]||s}</span>`}
@@ -134,6 +135,7 @@ function render(stale){
   }).join('');
   document.getElementById('app').classList.toggle('editing',editing);
   if(typeof renderMetrics==='function') renderMetrics();
+  if(typeof renderAdmob==='function') renderAdmob();
 }
 function setEditing(on){editing=on;
   document.getElementById('edit').style.display=on?'none':'';
@@ -199,6 +201,26 @@ async function save(){
   document.getElementById('save').disabled=false;setEditing(false);
 }
 function fmtProceeds(p){const e=Object.entries(p||{});return e.length?e.map(([c,v])=>`${c} ${v.toFixed(2)}`).join(' · '):null;}
+function chg(p){if(p==null)return '';const up=p>=0;return `<span style="color:${up?'#166534':'#991b1b'};font-weight:600">${up?'▲':'▼'} ${Math.abs(p)}%</span>`;}
+function renderAdmob(){
+  const el=document.getElementById('admob'); if(!ADMOB){el.innerHTML='';return;}
+  const cur=ADMOB.currency||'GBP', sym=cur==='GBP'?'£':cur==='USD'?'$':cur==='EUR'?'€':'';
+  const when=ADMOB.generated_at?new Date(ADMOB.generated_at).toLocaleString():'';
+  const nameOf=id=>((DATA&&DATA.apps.find(a=>a.id===id))||{}).name||id;
+  const apps=Object.entries(ADMOB.apps||{}).sort((a,b)=>b[1].earnings_30d-a[1].earnings_30d);
+  const rows=apps.map(([id,s])=>{
+    const tu=(s.ad_units||[]).filter(u=>u.earnings>0).slice(0,3).map(u=>`${esc(u.name||'?')} ${sym}${u.earnings.toFixed(2)}`).join(' · ');
+    return `<div class="mcard"><div class="mtitle">${esc(nameOf(id))} — ${sym}${s.earnings_30d.toFixed(2)} ${chg(s.change_pct)}</div>
+      <div class="mstats">
+        <div class="mstat"><b>${sym}${s.earnings_30d.toFixed(2)}</b><span>earnings · 30d</span></div>
+        <div class="mstat"><b>${sym}${(s.earnings_prev_30d||0).toFixed(2)}</b><span>prior 30d</span></div>
+        <div class="mstat"><b>${s.impressions_30d||0}</b><span>impressions</span></div>
+        <div class="mstat"><b>${sym}${(s.ecpm||0).toFixed(2)}</b><span>eCPM</span></div>
+      </div>${tu?`<div class="mnote">Top ad units: ${tu}</div>`:''}</div>`;
+  }).join('');
+  el.innerHTML=`<div class="mhead">💰 AdMob revenue <span class="src" style="background:#dcfce7;color:#166534">LIVE · AdMob API</span> <span class="meta" style="color:#9ca3af;font-size:12px">${esc(ADMOB.window||'')} · updated ${when}</span></div>
+    <div class="summary"><div class="pill"><b>${sym}${(ADMOB.total_30d||0).toFixed(2)}</b>total · 30d</div><div class="pill"><b>${chg(ADMOB.total_change_pct)||'—'}</b>vs prior 30d</div></div>${rows}`;
+}
 function renderMetrics(){
   const el=document.getElementById('metrics'); if(!METRICS){el.innerHTML='';return;}
   const when=METRICS.generated_at?new Date(METRICS.generated_at).toLocaleString():'';
@@ -226,17 +248,18 @@ function renderMetrics(){
 }
 async function load(){
   try{
-    const [a,o,m]=await Promise.all([
+    const [a,o,m,ad]=await Promise.all([
       fetch('apps.json').then(r=>r.json()),
       fetch('overrides.json').then(r=>r.ok?r.json():{apps:{}}).catch(()=>({apps:{}})),
-      fetch('metrics.json').then(r=>r.ok?r.json():null).catch(()=>null)
+      fetch('metrics.json').then(r=>r.ok?r.json():null).catch(()=>null),
+      fetch('admob.json').then(r=>r.ok?r.json():null).catch(()=>null)
     ]);
-    DATA=a; OVERRIDES=o&&o.apps?o:{apps:{}}; METRICS=m;
-    localStorage.setItem(LS_DATA,JSON.stringify({DATA,OVERRIDES,METRICS}));
-    render(false); renderMetrics();
+    DATA=a; OVERRIDES=o&&o.apps?o:{apps:{}}; METRICS=m; ADMOB=ad;
+    localStorage.setItem(LS_DATA,JSON.stringify({DATA,OVERRIDES,METRICS,ADMOB}));
+    render(false); renderMetrics(); renderAdmob();
   }catch(e){
     const c=JSON.parse(localStorage.getItem(LS_DATA)||"null");
-    if(c){DATA=c.DATA;OVERRIDES=c.OVERRIDES||{apps:{}};METRICS=c.METRICS||null;render(true);renderMetrics();}
+    if(c){DATA=c.DATA;OVERRIDES=c.OVERRIDES||{apps:{}};METRICS=c.METRICS||null;ADMOB=c.ADMOB||null;render(true);renderMetrics();renderAdmob();}
     else{document.getElementById('cards').innerHTML='<div class="card">Could not load data: '+e+'</div>';}
   }
 }

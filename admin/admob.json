@@ -1,0 +1,131 @@
+{
+  "generated_at": "2026-06-13T17:09:49Z",
+  "currency": "GBP",
+  "publisher": "pub-6056832234894930",
+  "window": "last 30 days vs prior 30 days",
+  "total_30d": 1.02,
+  "total_prev_30d": 1.17,
+  "total_change_pct": -13.0,
+  "apps": {
+    "sun-hours": {
+      "earnings_30d": 0.8,
+      "earnings_prev_30d": 1.06,
+      "impressions_30d": 989,
+      "ecpm": 0.81,
+      "ad_units": [
+        {
+          "name": "solaruk",
+          "earnings": 0.45,
+          "impressions": 897,
+          "ecpm": 0.5
+        },
+        {
+          "name": "Forecast",
+          "earnings": 0.27,
+          "impressions": 33,
+          "ecpm": 8.06
+        },
+        {
+          "name": "Mid section iOS",
+          "earnings": 0.2,
+          "impressions": 356,
+          "ecpm": 0.56
+        },
+        {
+          "name": "Forecast iOS",
+          "earnings": 0.16,
+          "impressions": 24,
+          "ecpm": 6.8
+        },
+        {
+          "name": "30 days iOS",
+          "earnings": 0.08,
+          "impressions": 4,
+          "ecpm": 20.35
+        },
+        {
+          "name": "30 days",
+          "earnings": 0.05,
+          "impressions": 7,
+          "ecpm": 7.42
+        },
+        {
+          "name": "History",
+          "earnings": 0.03,
+          "impressions": 52,
+          "ecpm": 0.67
+        },
+        {
+          "name": "History iOS",
+          "earnings": 0.02,
+          "impressions": 29,
+          "ecpm": 0.82
+        },
+        {
+          "name": "Solar iOS",
+          "earnings": 0.01,
+          "impressions": 14,
+          "ecpm": 0.97
+        }
+      ],
+      "change_pct": -25.0
+    },
+    "overtime-live": {
+      "earnings_30d": 0.22,
+      "earnings_prev_30d": 0.11,
+      "impressions_30d": 209,
+      "ecpm": 1.04,
+      "ad_units": [
+        {
+          "name": "History Full iOS",
+          "earnings": 0.23,
+          "impressions": 22,
+          "ecpm": 10.58
+        },
+        {
+          "name": "Hamburger menu Native iOS",
+          "earnings": 0.21,
+          "impressions": 204,
+          "ecpm": 1.04
+        },
+        {
+          "name": "Hamburger menu Native",
+          "earnings": 0.19,
+          "impressions": 167,
+          "ecpm": 1.15
+        },
+        {
+          "name": "Stats Banner iOS",
+          "earnings": 0.03,
+          "impressions": 54,
+          "ecpm": 0.53
+        },
+        {
+          "name": "History Full",
+          "earnings": 0.02,
+          "impressions": 4,
+          "ecpm": 3.85
+        },
+        {
+          "name": "Stats Banner",
+          "earnings": 0.01,
+          "impressions": 37,
+          "ecpm": 0.3
+        },
+        {
+          "name": "Insights Native iOS",
+          "earnings": 0.0,
+          "impressions": 10,
+          "ecpm": 0.3
+        },
+        {
+          "name": "Insights Native",
+          "earnings": 0.0,
+          "impressions": 1,
+          "ecpm": 0.09
+        }
+      ],
+      "change_pct": 100.0
+    }
+  }
+}
