@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-06-13T13:48:24.210Z",
+  "updated_at": "2026-06-13T21:31:49.021Z",
   "updated_by": "admin-page",
   "apps": {
     "overtime-live": {
-      "priority": 1,
+      "priority": 3,
       "next_action": "iOS 27 compatibility next",
-      "notes": "Fix calendar bug, iOS - then test Android."
+      "notes": "iOS27 focused development now."
     },
     "sun-hours": {
       "priority": 2,
