@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-13T15:18:05Z",
+  "generated_at": "2026-06-13T15:47:28Z",
   "window": "last 4 weeks (iOS sales)",
   "apps": {
     "overtime-live": {
@@ -38,6 +38,16 @@
         "recent_ratings": [],
         "installs": null,
         "note": "Installs report not readable yet (Play permission still propagating)"
+      },
+      "usage": {
+        "active_28d": 219,
+        "new_28d": 209,
+        "sessions_28d": 600,
+        "by_platform": {
+          "Android": 123,
+          "iOS": 96
+        },
+        "property": "508599572"
       }
     },
     "sun-hours": {
@@ -57,7 +67,8 @@
         ],
         "installs": null,
         "note": "Installs report not readable yet (Play permission still propagating)"
-      }
+      },
+      "usage": {}
     },
     "landlord-assistant": {
       "name": "Landlord Assistant: Rent",
@@ -73,7 +84,8 @@
         "recent_ratings": [],
         "installs": null,
         "note": "Installs/revenue need Play Console reporting-bucket access"
-      }
+      },
+      "usage": {}
     },
     "outflow": {
       "name": "Outflow: Subscription Tracker",
@@ -89,7 +101,8 @@
         "recent_ratings": [],
         "installs": null,
         "note": "Installs/revenue need Play Console reporting-bucket access"
-      }
+      },
+      "usage": {}
     }
   }
 }
