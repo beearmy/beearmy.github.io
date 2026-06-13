@@ -215,6 +215,7 @@ function renderMetrics(){
       const u=m.usage||{};
       if(u.active_28d!=null) s+=stat(u.active_28d,'active users · 28d');
       if(u.new_28d!=null) s+=stat(u.new_28d,'new users · 28d');
+      if(u.ad_revenue_28d!=null){const cur=u.currency||'USD';const sym=cur==='GBP'?'£':cur==='USD'?'$':cur==='EUR'?'€':'';s+=stat(sym+u.ad_revenue_28d.toFixed(2),'ad revenue · 28d'+(u.ad_impressions_28d!=null?' ('+u.ad_impressions_28d+' impr)':''));}
       if(u.by_platform){const bp=Object.entries(u.by_platform).map(([k,v])=>`${k} ${v}`).join(' · ');s+=stat(bp,'active by platform · 28d');}
       const rv=(i.recent_reviews||[])[0];
       const review=rv?`<div class="mreview">“${esc(rv.title||rv.body||'')}” — ★${rv.rating} ${esc(rv.territory||'')} ${rv.date||''}</div>`:'';
