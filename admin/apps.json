@@ -11,7 +11,7 @@
         "android"
       ],
       "priority": 1,
-      "next_action": "Keep shipping; evaluate Apple Ads after promo",
+      "next_action": "iOS 27 compatibility next",
       "asc_app_id": "6755075589",
       "android_package": "uk.andyhq.overtimelive",
       "testflight_url": "https://appstoreconnect.apple.com/teams/69a6de81-5abb-47e3-e053-5b8c7c11a4d1/apps/6755075589/testflight/ios/90759b3b-3ecc-4bab-bb73-0499cb2d2f9b",
@@ -52,7 +52,7 @@
         "android"
       ],
       "priority": 2,
-      "next_action": "iOS 27 testing next",
+      "next_action": "iOS 27 compatibility next",
       "asc_app_id": "6773940001",
       "android_package": "uk.andyhq.sunhours",
       "testflight_url": "https://appstoreconnect.apple.com/teams/69a6de81-5abb-47e3-e053-5b8c7c11a4d1/apps/6773940001/testflight/ios/692af576-8518-4583-80a8-3ddeab3f5e75",
