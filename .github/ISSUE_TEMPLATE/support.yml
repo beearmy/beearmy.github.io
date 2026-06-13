@@ -1,0 +1,32 @@
+name: App support / feedback
+description: Report a bug, ask a question, or request a feature for an AndyHQ app
+title: "[Support] "
+labels: ["support"]
+body:
+  - type: markdown
+    attributes:
+      value: "Thanks for getting in touch! Pick the app below so we can route your request."
+  - type: dropdown
+    id: app
+    attributes:
+      label: Which app?
+      options:
+        - Outflow
+        - Landlord Assistant
+        - Overtime Live
+        - Sun Hours
+        - Other / general
+    validations:
+      required: true
+  - type: textarea
+    id: details
+    attributes:
+      label: What's happening?
+      description: Describe the bug, question or request.
+    validations:
+      required: true
+  - type: input
+    id: device
+    attributes:
+      label: Device & OS (optional)
+      placeholder: "e.g. iPhone 15, iOS 18.5"
