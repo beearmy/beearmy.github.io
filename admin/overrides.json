@@ -1,24 +1,24 @@
 {
-  "updated_at": "2026-06-13T12:10:00Z",
-  "updated_by": "verify-test",
+  "updated_at": "2026-06-13T12:38:38.513Z",
+  "updated_by": "admin-page",
   "apps": {
     "overtime-live": {
       "priority": 1,
       "next_action": "iOS 27 compatibility next",
-      "notes": ""
+      "notes": "Fix calendar bug, iOS - then test Android."
     },
     "sun-hours": {
-      "priority": 2,
+      "priority": 5,
       "next_action": "iOS 27 compatibility next",
-      "notes": ""
+      "notes": "Stable. iOS and Android version parity - iOS 27 build next"
     },
     "landlord-assistant": {
-      "priority": 3,
+      "priority": 5,
       "next_action": "Awaiting App Store review",
       "notes": ""
     },
     "outflow": {
-      "priority": 4,
+      "priority": 5,
       "next_action": "Awaiting App Store review",
       "notes": ""
     }
