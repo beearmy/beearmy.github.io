@@ -1,130 +1,190 @@
 <!DOCTYPE html>
 <html lang="en"><head><meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>App Release Tracker — AndyHQ</title>
+<meta name="robots" content="noindex">
+<title>App Release Tracker — Admin</title>
 <style>
 :root{color-scheme:light}
 *{box-sizing:border-box}
 body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
  background:#f4f5f7;color:#1d2129;line-height:1.45;padding:20px}
 .wrap{max-width:1080px;margin:0 auto}
-header.top{display:flex;flex-wrap:wrap;align-items:baseline;gap:10px 16px;margin-bottom:6px}
+header.top{display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px;margin-bottom:6px}
 header.top h1{font-size:22px;margin:0;font-weight:700}
 .meta{color:#6b7280;font-size:13px}
-.src{display:inline-block;font-size:11px;font-weight:600;padding:2px 8px;border-radius:99px;background:#e6f0ff;color:#1d4ed8;vertical-align:middle}
+.src{display:inline-block;font-size:11px;font-weight:600;padding:2px 8px;border-radius:99px;background:#e6f0ff;color:#1d4ed8}
 .src.manual{background:#fef3c7;color:#92400e}
-.summary{display:flex;flex-wrap:wrap;gap:10px;margin:14px 0 22px}
+.spacer{flex:1}
+.btn{font:inherit;font-size:13px;font-weight:600;cursor:pointer;border-radius:8px;padding:7px 13px;border:1px solid #c7d2fe;background:#eef2ff;color:#3730a3}
+.btn:hover{background:#e0e7ff}
+.btn.primary{background:#4f46e5;border-color:#4f46e5;color:#fff}
+.btn.primary:hover{filter:brightness(1.06)}
+.btn.ghost{background:#fff;border-color:#e5e7eb;color:#374151}
+.btn:disabled{opacity:.55;cursor:default}
+.summary{display:flex;flex-wrap:wrap;gap:10px;margin:14px 0 18px}
 .pill{background:#fff;border:1px solid #e5e7eb;border-radius:10px;padding:10px 14px;font-size:13px;min-width:120px}
 .pill b{display:block;font-size:20px;line-height:1.2}
 .pill.warn{border-color:#fcd34d;background:#fffbeb}
-.card{background:#fff;border:1px solid #e5e7eb;border-radius:14px;padding:16px 18px;margin-bottom:16px;
- box-shadow:0 1px 2px rgba(0,0,0,.04)}
+.card{background:#fff;border:1px solid #e5e7eb;border-radius:14px;padding:16px 18px;margin-bottom:16px;box-shadow:0 1px 2px rgba(0,0,0,.04)}
 .card h2{margin:0 0 2px;font-size:17px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
 .prio{font-size:11px;font-weight:700;color:#fff;background:#6366f1;border-radius:6px;padding:2px 7px}
 .plats{font-size:12px;color:#6b7280}
-.next{font-size:13px;margin:6px 0 12px;color:#374151}
+.next{font-size:13px;margin:6px 0 8px;color:#374151}
 .next b{color:#b45309}
+.notes{font-size:13px;color:#4b5563;background:#fafafa;border:1px solid #eef0f2;border-radius:8px;padding:8px 11px;margin:0 0 12px;white-space:pre-wrap}
 .chgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
 .ch{border:1px solid #eef0f2;border-radius:10px;padding:9px 11px;background:#fafbfc}
 .ch .lbl{font-size:11px;text-transform:uppercase;letter-spacing:.03em;color:#6b7280;font-weight:600}
 .ch .ver{font-size:15px;font-weight:700;margin:2px 0 5px}
 .ch .ver small{font-weight:500;color:#6b7280}
 .badge{display:inline-block;font-size:11px;font-weight:600;padding:2px 8px;border-radius:99px}
-.b-live{background:#dcfce7;color:#166534}
-.b-testing{background:#dbeafe;color:#1e40af}
-.b-waiting_for_review{background:#fef3c7;color:#92400e}
-.b-in_review{background:#ede9fe;color:#5b21b6}
-.b-pending_release{background:#cffafe;color:#155e75}
-.b-rejected{background:#fee2e2;color:#991b1b}
-.b-prepare_for_submission{background:#f3f4f6;color:#374151}
-.b-processing{background:#f3f4f6;color:#374151}
-a.tf{font-size:12px;color:#2563eb;text-decoration:none}
-button#refresh{margin-left:auto;font:inherit;font-size:13px;font-weight:600;cursor:pointer;
- border:1px solid #c7d2fe;background:#eef2ff;color:#3730a3;border-radius:8px;padding:6px 12px}
-button#refresh:hover{background:#e0e7ff}
-button#refresh:disabled{opacity:.6;cursor:default}
-#toast{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);background:#1f2937;color:#fff;
- font-size:13px;padding:9px 16px;border-radius:8px;opacity:0;transition:opacity .25s;pointer-events:none}
+.b-live{background:#dcfce7;color:#166534}.b-testing{background:#dbeafe;color:#1e40af}
+.b-waiting_for_review{background:#fef3c7;color:#92400e}.b-in_review{background:#ede9fe;color:#5b21b6}
+.b-pending_release{background:#cffafe;color:#155e75}.b-rejected{background:#fee2e2;color:#991b1b}
+.b-prepare_for_submission{background:#f3f4f6;color:#374151}.b-processing{background:#f3f4f6;color:#374151}
+.edit-row{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin:8px 0}
+.edit-row label{font-size:12px;font-weight:600;color:#6b7280}
+select,input,textarea{font:inherit;border:1px solid #d1d5db;border-radius:8px;padding:7px 9px;color:#1d2129;background:#fff}
+input.next-in{flex:1;min-width:200px}
+textarea.notes-in{width:100%;min-height:64px;resize:vertical;margin-top:4px}
+.editing .view-only{display:none}
+.edit-fields{display:none}
+.editing .edit-fields{display:block}
+#toast{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);background:#1f2937;color:#fff;font-size:13px;padding:9px 16px;border-radius:8px;opacity:0;transition:opacity .25s;pointer-events:none;max-width:90vw;text-align:center}
 #toast.show{opacity:1}
 footer{color:#9ca3af;font-size:12px;margin-top:8px;text-align:center}
+.hint{font-size:12px;color:#9ca3af;margin-top:4px}
 </style></head>
-<body><div class="wrap">
-<header class="top"><h1>📱 App Release Tracker</h1>
-<span class="meta" id="meta"></span>
-<button id="refresh">↻ Refresh now</button></header>
+<body><div class="wrap" id="app">
+<header class="top">
+  <h1>📱 App Release Tracker</h1>
+  <span class="meta" id="meta"></span>
+  <span class="spacer"></span>
+  <button class="btn ghost" id="settings" title="Set GitHub token">⚙</button>
+  <button class="btn" id="edit">✎ Edit</button>
+  <button class="btn primary" id="save" style="display:none">Save</button>
+  <button class="btn ghost" id="cancel" style="display:none">Cancel</button>
+</header>
 <div class="summary" id="summary"></div>
 <div id="cards"></div>
-<footer>AndyHQ · data from App Store Connect API + manual Android · <span id="foot"></span></footer>
+<footer>AndyHQ admin · live data + your priorities/notes · <span id="foot"></span></footer>
 </div>
 <div id="toast"></div>
 <script>
-const REFRESH_TASK_ID="app-release-tracker-refresh";
-function toast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');
- setTimeout(()=>t.classList.remove('show'),3200);}
-(function(){const btn=document.getElementById('refresh');if(!btn)return;
- btn.addEventListener('click',async()=>{
-   if(window.cowork&&window.cowork.runScheduledTask){
-     btn.disabled=true;btn.textContent='↻ Refreshing…';
-     try{await window.cowork.runScheduledTask(REFRESH_TASK_ID);
-       toast('Refresh started — pulling App Store Connect. The view updates when it finishes.');}
-     catch(e){toast('Could not start refresh: '+e);btn.disabled=false;btn.textContent='↻ Refresh now';}
-   } else {location.reload();}
- });
-})();
-const STATE_LABEL={live:"Live",testing:"Testing",waiting_for_review:"Waiting for Review",
- in_review:"In Review",pending_release:"Pending Release",rejected:"Rejected",
- prepare_for_submission:"Prepare for Submission",processing:"Processing"};
-const CH_ORDER=[["ios_live","iOS Live"],["ios_review","iOS Update In Review"],
- ["ios_beta","iOS Beta (External)"],["ios_internal","iOS Internal"],
- ["android_live","Android Live"],["android_beta","Android Beta"]];
-function badge(s){const l=STATE_LABEL[s]||s;return `<span class="badge b-${s}">${l}</span>`}
-function ago(ts){const s=(Date.now()-new Date(ts))/1000;
- if(isNaN(s))return'unknown';if(s<90)return'just now';if(s<5400)return Math.round(s/60)+'m ago';
- if(s<172800)return Math.round(s/3600)+'h ago';return Math.round(s/86400)+'d ago';}
-function render(data,stale){
- const isLive=/api/.test(data.source||'');
- const when=data.generated_at?new Date(data.generated_at).toLocaleString():'unknown';
- document.getElementById('meta').innerHTML=
-   `<span class="src ${isLive?'':'manual'}">${isLive?'LIVE · App Store Connect + Google Play':'manual data'}</span>`+
-   (stale?` <span class="src manual">⚠ showing last saved copy</span>`:'');
- document.getElementById('foot').textContent='generated '+when;
- const apps=[...data.apps].sort((a,b)=>(a.priority||99)-(b.priority||99));
- let live=0,testing=0,waiting=0;
- apps.forEach(a=>Object.values(a.channels||{}).forEach(c=>{
-   if(c.state==='live')live++;else if(c.state==='testing')testing++;
-   else if(c.state==='waiting_for_review'||c.state==='in_review')waiting++;}));
- const waitingApps=apps.filter(a=>Object.values(a.channels||{}).some(c=>c.state==='waiting_for_review'||c.state==='in_review'));
- document.getElementById('summary').innerHTML=
-   `<div class="pill${stale?' warn':''}" title="${when}"><b>${ago(data.generated_at)}</b>last updated</div>`+
-   `<div class="pill"><b>${apps.length}</b>apps tracked</div>`+
-   `<div class="pill"><b>${live}</b>live channels</div>`+
-   `<div class="pill"><b>${testing}</b>in testing</div>`+
-   `<div class="pill warn"><b>${waiting}</b>awaiting review${waitingApps.length?` · ${waitingApps.map(a=>a.name.split(':')[0].split('—')[0].trim()).join(', ')}`:''}</div>`;
- document.getElementById('cards').innerHTML=apps.map(a=>{
-   const plats=(a.platforms||[]).map(p=>p==='ios'?'iOS':'Android').join(' + ');
-   const chans=CH_ORDER.filter(([k])=>a.channels&&a.channels[k]).map(([k,lbl])=>{
-     const c=a.channels[k];
-     return `<div class="ch"><div class="lbl">${lbl}</div>
-       <div class="ver">${c.version??'—'} <small>(${c.build??'?'})</small></div>${badge(c.state)}</div>`;
-   }).join('');
-   const tf=a.testflight_url?`<a class="tf" href="${a.testflight_url}" target="_blank">TestFlight ↗</a>`:'';
-   const store=a.store_url?` · <a class="tf" href="${a.store_url}" target="_blank">App Store ↗</a>`:'';
-   return `<div class="card"><h2><span class="prio">P${a.priority||'?'}</span>${a.name}
-     <span class="plats">${plats}</span></h2>
-     <div class="next">Next: <b>${a.next_action||'—'}</b></div>
-     <div class="chgrid">${chans}</div>
-     <div style="margin-top:10px">${tf}${store}</div></div>`;
- }).join('');
+const REPO="beearmy/beearmy.github.io", OV_PATH="admin/overrides.json", TOKEN_KEY="andyhq_gh_token", LS_DATA="andyhq_admin_last";
+const STATE_LABEL={live:"Live",testing:"Testing",waiting_for_review:"Waiting for Review",in_review:"In Review",pending_release:"Pending Release",rejected:"Rejected",prepare_for_submission:"Prepare for Submission",processing:"Processing"};
+const CH_ORDER=[["ios_live","iOS Live"],["ios_review","iOS Update In Review"],["ios_beta","iOS Beta (External)"],["ios_internal","iOS Internal"],["android_live","Android Live"],["android_beta","Android Beta"]];
+let DATA=null, OVERRIDES={apps:{}}, editing=false;
+
+function toast(m,ms){const t=document.getElementById('toast');t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),ms||3000);}
+function badge(s){return `<span class="badge b-${s}">${STATE_LABEL[s]||s}</span>`}
+function ago(ts){const s=(Date.now()-new Date(ts))/1000;if(isNaN(s))return'unknown';if(s<90)return'just now';if(s<5400)return Math.round(s/60)+'m ago';if(s<172800)return Math.round(s/3600)+'h ago';return Math.round(s/86400)+'d ago';}
+function esc(s){return (s||'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
+
+function merged(){
+  const apps=DATA.apps.map(a=>{const o=(OVERRIDES.apps||{})[a.id]||{};return {...a,
+    priority:o.priority??a.priority, next_action:o.next_action??a.next_action, notes:o.notes??a.notes??''};});
+  return apps.sort((x,y)=>(x.priority||99)-(y.priority||99));
 }
-const LS_KEY="andyhq_apps_last";
-function save(d){try{localStorage.setItem(LS_KEY,JSON.stringify(d));}catch(e){}}
-function cached(){try{return JSON.parse(localStorage.getItem(LS_KEY));}catch(e){return null;}}
-function start(){
-  if(window.APPS_DATA){save(window.APPS_DATA);return render(window.APPS_DATA,false);}
-  fetch('apps.json').then(r=>r.json()).then(d=>{save(d);render(d,false);})
-   .catch(()=>{const c=cached();
-     if(c){render(c,true);}
-     else{document.getElementById('cards').innerHTML='<div class="card">No data yet — this view fills in after the next refresh.</div>';}});
+function render(stale){
+  const isLive=/api/.test(DATA.source||'');
+  const when=DATA.generated_at?new Date(DATA.generated_at).toLocaleString():'unknown';
+  document.getElementById('meta').innerHTML=`<span class="src ${isLive?'':'manual'}">${isLive?'LIVE · App Store Connect + Google Play':'manual data'}</span>`+(stale?` <span class="src manual">⚠ last saved copy</span>`:'');
+  document.getElementById('foot').textContent='version data '+when;
+  const apps=merged();
+  let live=0,testing=0,waiting=0;
+  apps.forEach(a=>Object.values(a.channels||{}).forEach(c=>{if(c.state==='live')live++;else if(c.state==='testing')testing++;else if(c.state==='waiting_for_review'||c.state==='in_review')waiting++;}));
+  const wa=apps.filter(a=>Object.values(a.channels||{}).some(c=>c.state==='waiting_for_review'||c.state==='in_review'));
+  document.getElementById('summary').innerHTML=
+    `<div class="pill" title="${when}"><b>${ago(DATA.generated_at)}</b>version data</div>`+
+    `<div class="pill"><b>${apps.length}</b>apps</div>`+
+    `<div class="pill"><b>${live}</b>live channels</div>`+
+    `<div class="pill"><b>${testing}</b>in testing</div>`+
+    `<div class="pill warn"><b>${waiting}</b>awaiting review${wa.length?` · ${wa.map(a=>a.name.split(':')[0].split('—')[0].trim()).join(', ')}`:''}</div>`;
+  document.getElementById('cards').innerHTML=apps.map(a=>{
+    const plats=(a.platforms||[]).map(p=>p==='ios'?'iOS':'Android').join(' + ');
+    const chans=CH_ORDER.filter(([k])=>a.channels&&a.channels[k]).map(([k,lbl])=>{const c=a.channels[k];
+      return `<div class="ch"><div class="lbl">${lbl}</div><div class="ver">${c.version??'—'} <small>(${c.build??'?'})</small></div>${badge(c.state)}</div>`;}).join('');
+    const notes=a.notes?`<div class="notes view-only">📝 ${esc(a.notes)}</div>`:'';
+    const opts=[1,2,3,4,5].map(n=>`<option value="${n}" ${a.priority===n?'selected':''}>P${n}</option>`).join('');
+    return `<div class="card" data-id="${a.id}">
+      <h2><span class="prio">P${a.priority||'?'}</span>${esc(a.name)} <span class="plats">${plats}</span></h2>
+      <div class="next view-only">Next: <b>${esc(a.next_action)||'—'}</b></div>
+      ${notes}
+      <div class="edit-fields">
+        <div class="edit-row">
+          <label>Priority <select class="prio-in">${opts}</select></label>
+          <label style="flex:1">Next action <input class="next-in" value="${esc(a.next_action)}" placeholder="One-line next step"></label>
+        </div>
+        <label style="font-size:12px;font-weight:600;color:#6b7280">Notes</label>
+        <textarea class="notes-in" placeholder="Free-form notes / context / history">${esc(a.notes)}</textarea>
+      </div>
+      <div class="chgrid" style="margin-top:10px">${chans}</div>
+    </div>`;
+  }).join('');
+  document.getElementById('app').classList.toggle('editing',editing);
 }
-start();
+function setEditing(on){editing=on;
+  document.getElementById('edit').style.display=on?'none':'';
+  document.getElementById('save').style.display=on?'':'none';
+  document.getElementById('cancel').style.display=on?'':'none';
+  render(false);
+}
+function collect(){
+  const apps={};
+  document.querySelectorAll('.card').forEach(c=>{
+    const id=c.dataset.id;
+    apps[id]={priority:parseInt(c.querySelector('.prio-in').value,10),
+      next_action:c.querySelector('.next-in').value.trim(),
+      notes:c.querySelector('.notes-in').value.trim()};
+  });
+  return {updated_at:new Date().toISOString(),updated_by:"admin-page",apps};
+}
+async function ghCommit(token,obj){
+  const url=`https://api.github.com/repos/${REPO}/contents/${OV_PATH}`;
+  let sha;
+  const g=await fetch(url,{headers:{Authorization:`token ${token}`,Accept:"application/vnd.github+json"}});
+  if(g.ok){sha=(await g.json()).sha;} else if(g.status!==404){throw new Error("read "+g.status);}
+  const content=btoa(unescape(encodeURIComponent(JSON.stringify(obj,null,2))));
+  const r=await fetch(url,{method:"PUT",headers:{Authorization:`token ${token}`,Accept:"application/vnd.github+json"},
+    body:JSON.stringify({message:"Update app priorities/notes "+new Date().toISOString().slice(0,10),content,sha})});
+  if(!r.ok)throw new Error("save "+r.status+" "+(await r.text()).slice(0,120));
+}
+async function save(){
+  const obj=collect();
+  OVERRIDES=obj; localStorage.setItem(LS_DATA,JSON.stringify({DATA,OVERRIDES}));
+  let token=localStorage.getItem(TOKEN_KEY);
+  if(!token){token=prompt("Paste a GitHub token with contents:write on "+REPO+".\nIt is stored only in this browser, never on the page.");
+    if(token)localStorage.setItem(TOKEN_KEY,token.trim());}
+  if(!token){toast("Saved to this browser only (no token). Edits won't sync until you add a token.");setEditing(false);return;}
+  document.getElementById('save').disabled=true;
+  try{await ghCommit(token.trim(),obj);toast("Saved ✓ committed to repo — Claude can read it now.");}
+  catch(e){toast("Saved locally; repo save failed: "+e.message,5000);}
+  document.getElementById('save').disabled=false;setEditing(false);
+}
+async function load(){
+  try{
+    const [a,o]=await Promise.all([
+      fetch('apps.json').then(r=>r.json()),
+      fetch('overrides.json').then(r=>r.ok?r.json():{apps:{}}).catch(()=>({apps:{}}))
+    ]);
+    DATA=a; OVERRIDES=o&&o.apps?o:{apps:{}};
+    localStorage.setItem(LS_DATA,JSON.stringify({DATA,OVERRIDES}));
+    render(false);
+  }catch(e){
+    const c=JSON.parse(localStorage.getItem(LS_DATA)||"null");
+    if(c){DATA=c.DATA;OVERRIDES=c.OVERRIDES||{apps:{}};render(true);}
+    else{document.getElementById('cards').innerHTML='<div class="card">Could not load data: '+e+'</div>';}
+  }
+}
+document.getElementById('edit').onclick=()=>setEditing(true);
+document.getElementById('cancel').onclick=()=>setEditing(false);
+document.getElementById('save').onclick=save;
+document.getElementById('settings').onclick=()=>{
+  const cur=localStorage.getItem(TOKEN_KEY)?"(a token is set)":"(no token set)";
+  const v=prompt("GitHub token "+cur+". Paste to set, type CLEAR to remove, or Cancel.\nStored only in this browser.");
+  if(v===null)return; if(v.trim().toUpperCase()==="CLEAR"){localStorage.removeItem(TOKEN_KEY);toast("Token cleared.");}
+  else if(v.trim()){localStorage.setItem(TOKEN_KEY,v.trim());toast("Token saved on this device.");}
+};
+load();
 </script></body></html>
