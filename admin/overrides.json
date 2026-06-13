@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-13T12:56:42.938Z",
+  "updated_at": "2026-06-13T13:48:24.210Z",
   "updated_by": "admin-page",
   "apps": {
     "overtime-live": {
@@ -8,7 +8,7 @@
       "notes": "Fix calendar bug, iOS - then test Android."
     },
     "sun-hours": {
-      "priority": 1,
+      "priority": 2,
       "next_action": "iOS 27 compatibility next",
       "notes": "IAP for no ads broken in Android. Apple Watch showing as available in Android. For iOS - iOS 27 build next"
     },
