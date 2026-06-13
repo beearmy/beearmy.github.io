@@ -1,0 +1,95 @@
+{
+  "generated_at": "2026-06-13T14:41:53Z",
+  "window": "last 4 weeks (iOS sales)",
+  "apps": {
+    "overtime-live": {
+      "name": "Overtime Live \u2014 Shift Tracker",
+      "ios": {
+        "downloads_4w": 67,
+        "redownloads_4w": 121,
+        "proceeds": {},
+        "rating": 5,
+        "rating_count": 12,
+        "recent_reviews": [
+          {
+            "rating": 5,
+            "title": "Will never go back!",
+            "body": "Easy to use, intelligent and clean - has taken the pain out of my least favourite task beforehand!",
+            "territory": "GBR",
+            "date": "2026-05-09"
+          },
+          {
+            "rating": 5,
+            "title": "Really useful",
+            "body": "Great app for tracking hours and pay.",
+            "territory": "GBR",
+            "date": "2026-05-07"
+          },
+          {
+            "rating": 5,
+            "title": "Amazing",
+            "body": "Being a big overtime worker, this honestly helps me plan ahead to see how much money I\u2019m getting every month. Brilliant.",
+            "territory": "GBR",
+            "date": "2026-05-07"
+          }
+        ]
+      },
+      "android": {
+        "recent_ratings": [],
+        "installs": null,
+        "note": "Installs/revenue need Play Console reporting-bucket access"
+      }
+    },
+    "sun-hours": {
+      "name": "Sun Hours for Solar Panels",
+      "ios": {
+        "downloads_4w": 13,
+        "redownloads_4w": 3,
+        "proceeds": {},
+        "rating": 4.5,
+        "rating_count": 2,
+        "recent_reviews": []
+      },
+      "android": {
+        "recent_ratings": [
+          5,
+          5
+        ],
+        "installs": null,
+        "note": "Installs/revenue need Play Console reporting-bucket access"
+      }
+    },
+    "landlord-assistant": {
+      "name": "Landlord Assistant: Rent",
+      "ios": {
+        "downloads_4w": 0,
+        "redownloads_4w": 0,
+        "proceeds": {},
+        "rating": null,
+        "rating_count": null,
+        "recent_reviews": []
+      },
+      "android": {
+        "recent_ratings": [],
+        "installs": null,
+        "note": "Installs/revenue need Play Console reporting-bucket access"
+      }
+    },
+    "outflow": {
+      "name": "Outflow: Subscription Tracker",
+      "ios": {
+        "downloads_4w": 0,
+        "redownloads_4w": 0,
+        "proceeds": {},
+        "rating": null,
+        "rating_count": null,
+        "recent_reviews": []
+      },
+      "android": {
+        "recent_ratings": [],
+        "installs": null,
+        "note": "Installs/revenue need Play Console reporting-bucket access"
+      }
+    }
+  }
+}

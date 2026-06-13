@@ -54,6 +54,15 @@ textarea.notes-in{width:100%;min-height:64px;resize:vertical;margin-top:4px}
 #toast.show{opacity:1}
 footer{color:#9ca3af;font-size:12px;margin-top:8px;text-align:center}
 .hint{font-size:12px;color:#9ca3af;margin-top:4px}
+.mhead{font-size:16px;font-weight:700;margin:30px 0 12px;border-top:1px solid #e5e7eb;padding-top:22px}
+.mhead .meta{font-weight:400}
+.mcard{background:#fff;border:1px solid #e5e7eb;border-radius:14px;padding:14px 16px;margin-bottom:12px;box-shadow:0 1px 2px rgba(0,0,0,.04)}
+.mtitle{font-weight:700;font-size:15px;margin-bottom:10px}
+.mstats{display:flex;flex-wrap:wrap;gap:22px}
+.mstat b{display:block;font-size:21px;line-height:1.1}
+.mstat span{font-size:11.5px;color:#6b7280}
+.mreview{margin-top:11px;font-size:13px;color:#4b5563;font-style:italic;background:#fafafa;border:1px solid #eef0f2;border-radius:8px;padding:8px 11px}
+.mnote{margin-top:8px;font-size:12px;color:#9ca3af}
 </style></head>
 <body><div class="wrap" id="app">
 <header class="top">
@@ -67,6 +76,7 @@ footer{color:#9ca3af;font-size:12px;margin-top:8px;text-align:center}
 </header>
 <div class="summary" id="summary"></div>
 <div id="cards"></div>
+<div id="metrics"></div>
 <footer>AndyHQ admin · live data + your priorities/notes · <span id="foot"></span></footer>
 </div>
 <div id="toast"></div>
@@ -74,7 +84,7 @@ footer{color:#9ca3af;font-size:12px;margin-top:8px;text-align:center}
 const REPO="beearmy/beearmy.github.io", OV_PATH="admin/overrides.json", TOKEN_KEY="andyhq_gh_token", LS_DATA="andyhq_admin_last";
 const STATE_LABEL={live:"Live",testing:"Testing",waiting_for_review:"Waiting for Review",in_review:"In Review",pending_release:"Pending Release",rejected:"Rejected",prepare_for_submission:"Prepare for Submission",processing:"Processing"};
 const CH_ORDER=[["ios_live","iOS Live"],["ios_review","iOS Update In Review"],["ios_beta","iOS Beta (External)"],["ios_internal","iOS Internal"],["android_live","Android Live"],["android_beta","Android Beta"]];
-let DATA=null, OVERRIDES={apps:{}}, editing=false;
+let DATA=null, OVERRIDES={apps:{}}, METRICS=null, editing=false;
 
 function toast(m,ms){const t=document.getElementById('toast');t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),ms||3000);}
 function badge(s){return `<span class="badge b-${s}">${STATE_LABEL[s]||s}</span>`}
@@ -123,6 +133,7 @@ function render(stale){
     </div>`;
   }).join('');
   document.getElementById('app').classList.toggle('editing',editing);
+  if(typeof renderMetrics==='function') renderMetrics();
 }
 function setEditing(on){editing=on;
   document.getElementById('edit').style.display=on?'none':'';
@@ -187,18 +198,38 @@ async function save(){
   catch(e){toast("Saved locally; repo save failed: "+e.message,5000);}
   document.getElementById('save').disabled=false;setEditing(false);
 }
+function fmtProceeds(p){const e=Object.entries(p||{});return e.length?e.map(([c,v])=>`${c} ${v.toFixed(2)}`).join(' · '):null;}
+function renderMetrics(){
+  const el=document.getElementById('metrics'); if(!METRICS){el.innerHTML='';return;}
+  const when=METRICS.generated_at?new Date(METRICS.generated_at).toLocaleString():'';
+  el.innerHTML=`<div class="mhead">📊 Metrics <span class="meta src" style="background:#e6f0ff;color:#1d4ed8">${esc(METRICS.window||'')}</span> <span class="meta" style="color:#9ca3af;font-size:12px">updated ${when}</span></div>`+
+    merged().map(a=>{const m=(METRICS.apps||{})[a.id]; if(!m)return''; const i=m.ios||{}, an=m.android||{};
+      const stat=(b,s)=>`<div class="mstat"><b>${b}</b><span>${s}</span></div>`;
+      let s=stat(i.downloads_4w||0,'iOS downloads · 4w');
+      if(i.rating) s+=stat('★'+i.rating, (i.rating_count||0)+' ratings · iOS');
+      const rev=fmtProceeds(i.proceeds); if(rev) s+=stat(rev,'revenue · 4w');
+      if(i.redownloads_4w) s+=stat(i.redownloads_4w,'re-downloads · 4w');
+      if(an.recent_ratings&&an.recent_ratings.length){const avg=(an.recent_ratings.reduce((x,y)=>x+y,0)/an.recent_ratings.length).toFixed(1);s+=stat('★'+avg,an.recent_ratings.length+' recent Android reviews');}
+      const rv=(i.recent_reviews||[])[0];
+      const review=rv?`<div class="mreview">“${esc(rv.title||rv.body||'')}” — ★${rv.rating} ${esc(rv.territory||'')} ${rv.date||''}</div>`:'';
+      const liveYet=(i.downloads_4w||i.rating)?'':`<div class="mnote">Not live on the App Store yet.</div>`;
+      const aNote=an.installs?'':`<div class="mnote">Android: ${esc(an.note||'installs/revenue not connected')}.</div>`;
+      return `<div class="mcard"><div class="mtitle">${esc(a.name)}</div><div class="mstats">${s}</div>${review}${liveYet}${aNote}</div>`;
+    }).join('');
+}
 async function load(){
   try{
-    const [a,o]=await Promise.all([
+    const [a,o,m]=await Promise.all([
       fetch('apps.json').then(r=>r.json()),
-      fetch('overrides.json').then(r=>r.ok?r.json():{apps:{}}).catch(()=>({apps:{}}))
+      fetch('overrides.json').then(r=>r.ok?r.json():{apps:{}}).catch(()=>({apps:{}})),
+      fetch('metrics.json').then(r=>r.ok?r.json():null).catch(()=>null)
     ]);
-    DATA=a; OVERRIDES=o&&o.apps?o:{apps:{}};
-    localStorage.setItem(LS_DATA,JSON.stringify({DATA,OVERRIDES}));
-    render(false);
+    DATA=a; OVERRIDES=o&&o.apps?o:{apps:{}}; METRICS=m;
+    localStorage.setItem(LS_DATA,JSON.stringify({DATA,OVERRIDES,METRICS}));
+    render(false); renderMetrics();
   }catch(e){
     const c=JSON.parse(localStorage.getItem(LS_DATA)||"null");
-    if(c){DATA=c.DATA;OVERRIDES=c.OVERRIDES||{apps:{}};render(true);}
+    if(c){DATA=c.DATA;OVERRIDES=c.OVERRIDES||{apps:{}};METRICS=c.METRICS||null;render(true);renderMetrics();}
     else{document.getElementById('cards').innerHTML='<div class="card">Could not load data: '+e+'</div>';}
   }
 }
