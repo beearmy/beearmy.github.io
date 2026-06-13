@@ -209,11 +209,13 @@ function renderMetrics(){
       if(i.rating) s+=stat('★'+i.rating, (i.rating_count||0)+' ratings · iOS');
       const rev=fmtProceeds(i.proceeds); if(rev) s+=stat(rev,'revenue · 4w');
       if(i.redownloads_4w) s+=stat(i.redownloads_4w,'re-downloads · 4w');
+      if(an.installs_mtd!=null) s+=stat(an.installs_mtd,'Android installs · '+(an.installs_month||'MTD'));
+      if(an.active_installs!=null) s+=stat(an.active_installs,'active Android installs');
       if(an.recent_ratings&&an.recent_ratings.length){const avg=(an.recent_ratings.reduce((x,y)=>x+y,0)/an.recent_ratings.length).toFixed(1);s+=stat('★'+avg,an.recent_ratings.length+' recent Android reviews');}
       const rv=(i.recent_reviews||[])[0];
       const review=rv?`<div class="mreview">“${esc(rv.title||rv.body||'')}” — ★${rv.rating} ${esc(rv.territory||'')} ${rv.date||''}</div>`:'';
       const liveYet=(i.downloads_4w||i.rating)?'':`<div class="mnote">Not live on the App Store yet.</div>`;
-      const aNote=an.installs?'':`<div class="mnote">Android: ${esc(an.note||'installs/revenue not connected')}.</div>`;
+      const aNote=an.note?`<div class="mnote">Android: ${esc(an.note)}.</div>`:'';
       return `<div class="mcard"><div class="mtitle">${esc(a.name)}</div><div class="mstats">${s}</div>${review}${liveYet}${aNote}</div>`;
     }).join('');
 }
