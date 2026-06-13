@@ -78,11 +78,16 @@ const CH_ORDER=[["ios_live","iOS Live"],["ios_review","iOS Update In Review"],
  ["ios_beta","iOS Beta (External)"],["ios_internal","iOS Internal"],
  ["android_live","Android Live"],["android_beta","Android Beta"]];
 function badge(s){const l=STATE_LABEL[s]||s;return `<span class="badge b-${s}">${l}</span>`}
-function render(data){
+function ago(ts){const s=(Date.now()-new Date(ts))/1000;
+ if(isNaN(s))return'unknown';if(s<90)return'just now';if(s<5400)return Math.round(s/60)+'m ago';
+ if(s<172800)return Math.round(s/3600)+'h ago';return Math.round(s/86400)+'d ago';}
+function render(data,stale){
+ const isLive=/api/.test(data.source||'');
+ const when=data.generated_at?new Date(data.generated_at).toLocaleString():'unknown';
  document.getElementById('meta').innerHTML=
-   `<span class="src ${data.source==='manual'?'manual':''}">${data.source==='app-store-connect-api'?'LIVE · App Store Connect':'manual'}</span> `+
-   `updated ${new Date(data.generated_at).toLocaleString()}`;
- document.getElementById('foot').textContent='generated '+new Date(data.generated_at).toLocaleString();
+   `<span class="src ${isLive?'':'manual'}">${isLive?'LIVE · App Store Connect + Google Play':'manual data'}</span>`+
+   (stale?` <span class="src manual">⚠ showing last saved copy</span>`:'');
+ document.getElementById('foot').textContent='generated '+when;
  const apps=[...data.apps].sort((a,b)=>(a.priority||99)-(b.priority||99));
  let live=0,testing=0,waiting=0;
  apps.forEach(a=>Object.values(a.channels||{}).forEach(c=>{
@@ -90,6 +95,7 @@ function render(data){
    else if(c.state==='waiting_for_review'||c.state==='in_review')waiting++;}));
  const waitingApps=apps.filter(a=>Object.values(a.channels||{}).some(c=>c.state==='waiting_for_review'||c.state==='in_review'));
  document.getElementById('summary').innerHTML=
+   `<div class="pill${stale?' warn':''}" title="${when}"><b>${ago(data.generated_at)}</b>last updated</div>`+
    `<div class="pill"><b>${apps.length}</b>apps tracked</div>`+
    `<div class="pill"><b>${live}</b>live channels</div>`+
    `<div class="pill"><b>${testing}</b>in testing</div>`+
@@ -110,7 +116,15 @@ function render(data){
      <div style="margin-top:10px">${tf}${store}</div></div>`;
  }).join('');
 }
-if(window.APPS_DATA){render(window.APPS_DATA);}
-else{fetch('apps.json').then(r=>r.json()).then(render)
-  .catch(e=>{document.getElementById('cards').innerHTML='<div class="card">Could not load apps.json: '+e+'</div>';});}
+const LS_KEY="andyhq_apps_last";
+function save(d){try{localStorage.setItem(LS_KEY,JSON.stringify(d));}catch(e){}}
+function cached(){try{return JSON.parse(localStorage.getItem(LS_KEY));}catch(e){return null;}}
+function start(){
+  if(window.APPS_DATA){save(window.APPS_DATA);return render(window.APPS_DATA,false);}
+  fetch('apps.json').then(r=>r.json()).then(d=>{save(d);render(d,false);})
+   .catch(()=>{const c=cached();
+     if(c){render(c,true);}
+     else{document.getElementById('cards').innerHTML='<div class="card">No data yet — this view fills in after the next refresh.</div>';}});
+}
+start();
 </script></body></html>
