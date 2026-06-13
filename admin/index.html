@@ -39,16 +39,38 @@ header.top h1{font-size:22px;margin:0;font-weight:700}
 .b-prepare_for_submission{background:#f3f4f6;color:#374151}
 .b-processing{background:#f3f4f6;color:#374151}
 a.tf{font-size:12px;color:#2563eb;text-decoration:none}
+button#refresh{margin-left:auto;font:inherit;font-size:13px;font-weight:600;cursor:pointer;
+ border:1px solid #c7d2fe;background:#eef2ff;color:#3730a3;border-radius:8px;padding:6px 12px}
+button#refresh:hover{background:#e0e7ff}
+button#refresh:disabled{opacity:.6;cursor:default}
+#toast{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);background:#1f2937;color:#fff;
+ font-size:13px;padding:9px 16px;border-radius:8px;opacity:0;transition:opacity .25s;pointer-events:none}
+#toast.show{opacity:1}
 footer{color:#9ca3af;font-size:12px;margin-top:8px;text-align:center}
 </style></head>
 <body><div class="wrap">
 <header class="top"><h1>📱 App Release Tracker</h1>
-<span class="meta" id="meta"></span></header>
+<span class="meta" id="meta"></span>
+<button id="refresh">↻ Refresh now</button></header>
 <div class="summary" id="summary"></div>
 <div id="cards"></div>
 <footer>AndyHQ · data from App Store Connect API + manual Android · <span id="foot"></span></footer>
 </div>
+<div id="toast"></div>
 <script>
+const REFRESH_TASK_ID="app-release-tracker-refresh";
+function toast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');
+ setTimeout(()=>t.classList.remove('show'),3200);}
+(function(){const btn=document.getElementById('refresh');if(!btn)return;
+ btn.addEventListener('click',async()=>{
+   if(window.cowork&&window.cowork.runScheduledTask){
+     btn.disabled=true;btn.textContent='↻ Refreshing…';
+     try{await window.cowork.runScheduledTask(REFRESH_TASK_ID);
+       toast('Refresh started — pulling App Store Connect. The view updates when it finishes.');}
+     catch(e){toast('Could not start refresh: '+e);btn.disabled=false;btn.textContent='↻ Refresh now';}
+   } else {location.reload();}
+ });
+})();
 const STATE_LABEL={live:"Live",testing:"Testing",waiting_for_review:"Waiting for Review",
  in_review:"In Review",pending_release:"Pending Release",rejected:"Rejected",
  prepare_for_submission:"Prepare for Submission",processing:"Processing"};
