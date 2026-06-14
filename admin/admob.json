@@ -1,41 +1,41 @@
 {
-  "generated_at": "2026-06-13T17:09:49Z",
+  "generated_at": "2026-06-14T06:02:19Z",
   "currency": "GBP",
   "publisher": "pub-6056832234894930",
   "window": "last 30 days vs prior 30 days",
-  "total_30d": 1.02,
-  "total_prev_30d": 1.17,
-  "total_change_pct": -13.0,
+  "total_30d": 0.99,
+  "total_prev_30d": 1.16,
+  "total_change_pct": -15.0,
   "apps": {
     "sun-hours": {
-      "earnings_30d": 0.8,
-      "earnings_prev_30d": 1.06,
-      "impressions_30d": 989,
-      "ecpm": 0.81,
+      "earnings_30d": 0.78,
+      "earnings_prev_30d": 1.04,
+      "impressions_30d": 987,
+      "ecpm": 0.79,
       "ad_units": [
         {
           "name": "solaruk",
-          "earnings": 0.45,
-          "impressions": 897,
-          "ecpm": 0.5
+          "earnings": 0.41,
+          "impressions": 891,
+          "ecpm": 0.46
         },
         {
           "name": "Forecast",
-          "earnings": 0.27,
-          "impressions": 33,
-          "ecpm": 8.06
+          "earnings": 0.28,
+          "impressions": 35,
+          "ecpm": 8.04
         },
         {
           "name": "Mid section iOS",
           "earnings": 0.2,
-          "impressions": 356,
-          "ecpm": 0.56
+          "impressions": 377,
+          "ecpm": 0.54
         },
         {
           "name": "Forecast iOS",
-          "earnings": 0.16,
-          "impressions": 24,
-          "ecpm": 6.8
+          "earnings": 0.18,
+          "impressions": 25,
+          "ecpm": 7.27
         },
         {
           "name": "30 days iOS",
@@ -46,35 +46,35 @@
         {
           "name": "30 days",
           "earnings": 0.05,
-          "impressions": 7,
-          "ecpm": 7.42
+          "impressions": 8,
+          "ecpm": 6.82
+        },
+        {
+          "name": "History iOS",
+          "earnings": 0.03,
+          "impressions": 33,
+          "ecpm": 0.79
         },
         {
           "name": "History",
           "earnings": 0.03,
-          "impressions": 52,
-          "ecpm": 0.67
-        },
-        {
-          "name": "History iOS",
-          "earnings": 0.02,
-          "impressions": 29,
-          "ecpm": 0.82
+          "impressions": 53,
+          "ecpm": 0.64
         },
         {
           "name": "Solar iOS",
           "earnings": 0.01,
-          "impressions": 14,
-          "ecpm": 0.97
+          "impressions": 16,
+          "ecpm": 0.88
         }
       ],
       "change_pct": -25.0
     },
     "overtime-live": {
-      "earnings_30d": 0.22,
-      "earnings_prev_30d": 0.11,
-      "impressions_30d": 209,
-      "ecpm": 1.04,
+      "earnings_30d": 0.21,
+      "earnings_prev_30d": 0.12,
+      "impressions_30d": 189,
+      "ecpm": 1.09,
       "ad_units": [
         {
           "name": "History Full iOS",
@@ -85,32 +85,38 @@
         {
           "name": "Hamburger menu Native iOS",
           "earnings": 0.21,
-          "impressions": 204,
+          "impressions": 197,
           "ecpm": 1.04
         },
         {
           "name": "Hamburger menu Native",
-          "earnings": 0.19,
-          "impressions": 167,
-          "ecpm": 1.15
+          "earnings": 0.18,
+          "impressions": 147,
+          "ecpm": 1.2
         },
         {
           "name": "Stats Banner iOS",
           "earnings": 0.03,
-          "impressions": 54,
-          "ecpm": 0.53
+          "impressions": 49,
+          "ecpm": 0.55
         },
         {
           "name": "History Full",
           "earnings": 0.02,
-          "impressions": 4,
-          "ecpm": 3.85
+          "impressions": 5,
+          "ecpm": 3.66
         },
         {
           "name": "Stats Banner",
           "earnings": 0.01,
-          "impressions": 37,
+          "impressions": 36,
           "ecpm": 0.3
+        },
+        {
+          "name": "Progress Native iOS",
+          "earnings": 0.0,
+          "impressions": 1,
+          "ecpm": 0.19
         },
         {
           "name": "Insights Native iOS",
@@ -125,7 +131,7 @@
           "ecpm": 0.09
         }
       ],
-      "change_pct": 100.0
+      "change_pct": 75.0
     }
   }
 }

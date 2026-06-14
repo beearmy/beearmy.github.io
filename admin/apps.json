@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-06-13T11:58:59Z",
-  "source": "app-store-connect-api + google-play-api",
+  "generated_at": "2026-06-14T06:01:36Z",
+  "source": "app-store-connect-api",
   "team_id": "69a6de81-5abb-47e3-e053-5b8c7c11a4d1",
   "apps": [
     {
@@ -23,13 +23,13 @@
           "state": "live"
         },
         "ios_beta": {
-          "version": "3.0.9",
-          "build": "67",
+          "version": "3.1.1",
+          "build": "69",
           "state": "testing"
         },
         "ios_internal": {
-          "version": "3.0.9",
-          "build": "67",
+          "version": "3.1.1",
+          "build": "70",
           "state": "testing"
         },
         "android_live": {
@@ -41,6 +41,11 @@
           "version": "3.0.0",
           "build": "52",
           "state": "testing"
+        },
+        "ios_review": {
+          "version": "3.1",
+          "build": "69",
+          "state": "waiting_for_review"
         }
       }
     },
@@ -101,7 +106,7 @@
         "ios_live": {
           "version": "1.0",
           "build": "1",
-          "state": "waiting_for_review"
+          "state": "in_review"
         },
         "ios_beta": {
           "version": "1.0",
@@ -131,7 +136,7 @@
         "ios_live": {
           "version": "1.0",
           "build": "3",
-          "state": "waiting_for_review"
+          "state": "in_review"
         },
         "ios_beta": {
           "version": "1.0",

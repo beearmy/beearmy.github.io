@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-13T16:11:10Z",
+  "generated_at": "2026-06-14T06:02:12Z",
   "window": "last 4 weeks (iOS sales)",
   "apps": {
     "overtime-live": {
@@ -40,15 +40,15 @@
         "note": "Installs report not readable yet (Play permission still propagating)"
       },
       "usage": {
-        "active_28d": 219,
-        "new_28d": 209,
-        "sessions_28d": 600,
+        "active_28d": 226,
+        "new_28d": 215,
+        "sessions_28d": 625,
         "ad_revenue_28d": 0.27,
-        "ad_impressions_28d": 190,
+        "ad_impressions_28d": 188,
         "currency": "USD",
         "by_platform": {
-          "Android": 123,
-          "iOS": 96
+          "Android": 124,
+          "iOS": 102
         },
         "property": "508599572"
       }
