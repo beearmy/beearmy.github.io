@@ -1,0 +1,20 @@
+name: Outflow — bug or feature
+description: Report a bug, ask a question, or request a feature for Outflow
+title: "[Outflow] "
+labels: ["support"]
+body:
+  - type: markdown
+    attributes:
+      value: "Thanks for helping improve **Outflow** — the private subscription tracker. Tell us what's up and we'll reply here."
+  - type: textarea
+    id: details
+    attributes:
+      label: What's happening?
+      description: Describe the bug, question or request.
+    validations:
+      required: true
+  - type: input
+    id: device
+    attributes:
+      label: Device & iOS version (optional)
+      placeholder: "e.g. iPhone 16 Pro, iOS 18.5"
