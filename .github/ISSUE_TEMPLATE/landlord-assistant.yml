@@ -1,11 +1,11 @@
-name: Outflow support
-description: Report a bug, ask a question, or request a feature for Outflow
-title: "[Outflow] "
-labels: ["support", "app:outflow"]
+name: Landlord Assistant support
+description: "Report a bug, ask a question, or request a feature for Landlord Assistant: Rent"
+title: "[Landlord] "
+labels: ["support", "app:landlord"]
 body:
   - type: markdown
     attributes:
-      value: "Thanks for reporting this. This form labels the ticket for Outflow automatically."
+      value: "Thanks for reporting this. Add the useful bits below and the ticket will be labelled for Landlord Assistant automatically."
   - type: dropdown
     id: request_type
     attributes:
@@ -13,6 +13,7 @@ body:
       options:
         - Bug
         - Feature request
+        - iCloud sync
         - Purchase or subscription
         - Privacy question
         - General question
@@ -23,6 +24,7 @@ body:
     attributes:
       label: What happened or what would you like?
       description: A short plain-English description is perfect.
+      placeholder: "Example: Rent shows late when the payment is due on the last Friday of the month."
     validations:
       required: true
   - type: textarea
@@ -30,8 +32,16 @@ body:
     attributes:
       label: Steps to reproduce, if it is a bug
       placeholder: |
-        1. Open Outflow
-        2. Tap...
+        1. Open People
+        2. Edit a person
+        3. Set rent date...
+    validations:
+      required: false
+  - type: textarea
+    id: expected
+    attributes:
+      label: What did you expect?
+      placeholder: "What should the app have done instead?"
     validations:
       required: false
   - type: dropdown
@@ -48,6 +58,7 @@ body:
     id: app_version
     attributes:
       label: App version, if you know it
+      placeholder: "Example: 1.0.2 (6)"
     validations:
       required: false
   - type: input
