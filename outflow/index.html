@@ -3,51 +3,1019 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Outflow — Subscription Tracker | AndyHQ</title>
-<meta name="description" content="Outflow is a privacy-first subscription tracker for iPhone. Track every recurring cost, get renewal reminders, and see where your money goes — no bank linking, no account, nothing leaves your device.">
+<title>Outflow: Subscription Tracker for iPhone — Private, No Bank Linking</title>
+<meta name="description" content="Track every subscription privately on your iPhone. On-device AI fills details from receipts in seconds. No bank linking, no account, pay once. Free + one-time Pro unlock.">
+<meta name="keywords" content="subscription tracker, subscription tracker iphone, bill tracker app, recurring payment tracker, no bank link subscription tracker, private subscription tracker, subscription manager ios, bobby app alternative, rocket money alternative, subscription reminder app, pay once subscription app, outflow">
+<meta name="author" content="AndyHQ">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://beearmy.github.io/outflow/">
+
+<!-- Open Graph -->
 <meta property="og:type" content="website">
-<meta property="og:title" content="Outflow — Subscription Tracker">
-<meta property="og:description" content="Know exactly what you pay for. A private, on-device subscription tracker for iPhone.">
+<meta property="og:title" content="Outflow — Subscription Tracker for iPhone">
+<meta property="og:description" content="Track every subscription privately on your iPhone. On-device AI. No bank linking. Pay once.">
 <meta property="og:url" content="https://beearmy.github.io/outflow/">
+<meta property="og:image" content="https://beearmy.github.io/outflow/ss/1.png">
+<meta property="og:image:width" content="600">
+<meta property="og:image:height" content="1300">
+<meta property="og:locale" content="en_GB">
+<meta property="og:locale:alternate" content="en_US">
+
+<!-- Twitter / X -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Outflow — Subscription Tracker for iPhone">
+<meta name="twitter:description" content="Track every subscription privately. On-device AI. No bank linking. Pay once.">
+<meta name="twitter:image" content="https://beearmy.github.io/outflow/ss/1.png">
+
 <link rel="stylesheet" href="/site.css">
+
+<style>
+/* ── Outflow page tokens ────────────────────────── */
+:root {
+  --of-light:  #eeebfd;
+  --of-mid:    #7c6cf0;
+  --of-dark:   #5b46d6;
+  --of-ink:    #4a3a9a;
+  --of-border: #cdc5f8;
+}
+
+/* ── Hero ───────────────────────────────────────── */
+.of-hero {
+  background: linear-gradient(150deg, #f3f0ff 0%, #faf6f0 65%);
+  border: 1px solid var(--of-border);
+  border-radius: 24px;
+  padding: 52px 44px 48px;
+  margin: 20px 0 36px;
+  position: relative;
+  overflow: hidden;
+}
+.of-hero::after {
+  content: '💧';
+  position: absolute;
+  font-size: 180px;
+  opacity: .06;
+  right: -20px; bottom: -40px;
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+}
+.of-live-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+  color: var(--of-dark);
+  background: var(--of-light);
+  border: 1px solid var(--of-border);
+  padding: 5px 13px;
+  border-radius: 99px;
+  margin-bottom: 22px;
+}
+.of-live-dot {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: #22c55e;
+  box-shadow: 0 0 0 3px rgba(34,197,94,.2);
+  animation: ping 2.2s ease-in-out infinite;
+}
+@keyframes ping {
+  0%, 100% { box-shadow: 0 0 0 3px rgba(34,197,94,.2); }
+  50%       { box-shadow: 0 0 0 6px rgba(34,197,94,.06); }
+}
+.of-hero h1 {
+  font-size: clamp(28px, 5.5vw, 52px);
+  line-height: 1.07;
+  letter-spacing: -.03em;
+  font-weight: 860;
+  margin: 0 0 18px;
+  color: #18122e;
+  max-width: 640px;
+}
+.of-hero h1 em {
+  font-style: normal;
+  color: var(--of-dark);
+}
+.of-hero .lead {
+  font-size: clamp(16px, 2.4vw, 19px);
+  color: #5d564b;
+  max-width: 580px;
+  line-height: 1.65;
+  margin: 0 0 30px;
+}
+.of-cta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  align-items: center;
+}
+.of-store-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 11px;
+  background: #18122e;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 700;
+  padding: 13px 22px;
+  border-radius: 14px;
+  text-decoration: none;
+  letter-spacing: -.01em;
+  transition: transform .15s ease, box-shadow .15s ease;
+  box-shadow: 0 2px 4px rgba(0,0,0,.18), 0 8px 24px rgba(0,0,0,.12);
+}
+.of-store-btn:hover {
+  text-decoration: none;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,.2), 0 16px 32px rgba(0,0,0,.14);
+}
+.of-store-btn svg { flex-shrink: 0; }
+.of-store-btn .stl {
+  display: block;
+  font-size: 10.5px;
+  font-weight: 500;
+  opacity: .72;
+  line-height: 1;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  margin-bottom: 2px;
+}
+.of-store-btn .stb {
+  display: block;
+  font-size: 17px;
+  font-weight: 820;
+  line-height: 1.1;
+  letter-spacing: -.01em;
+}
+.of-hero-meta {
+  font-size: 14px;
+  font-weight: 600;
+  color: #706860;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.of-stars { color: #f59e0b; }
+.of-sep { color: #ccc; }
+
+/* ── Stat strip ─────────────────────────────────── */
+.of-strip {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  overflow: hidden;
+  margin: 0 0 52px;
+}
+.of-stat {
+  background: var(--card);
+  padding: 20px 16px;
+  text-align: center;
+}
+.of-stat .num {
+  display: block;
+  font-size: 22px;
+  font-weight: 860;
+  color: var(--of-dark);
+  letter-spacing: -.02em;
+  line-height: 1;
+  margin-bottom: 5px;
+}
+.of-stat .lbl {
+  display: block;
+  font-size: 12.5px;
+  color: var(--muted);
+  font-weight: 500;
+  line-height: 1.3;
+}
+
+/* ── Section labeling ───────────────────────────── */
+.of-sh {
+  font-size: 12.5px;
+  font-weight: 700;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 0 0 14px;
+}
+h2.of-h2 {
+  font-size: clamp(22px, 3.8vw, 36px);
+  font-weight: 830;
+  letter-spacing: -.025em;
+  line-height: 1.12;
+  margin: 0 0 12px;
+  color: #18122e;
+}
+.of-intro {
+  font-size: 17px;
+  color: #5d564b;
+  max-width: 580px;
+  margin: 0 0 32px;
+  line-height: 1.65;
+}
+
+/* ── Screenshots ────────────────────────────────── */
+.of-ss-row {
+  display: flex;
+  gap: 14px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  padding: 6px 0 22px;
+  scrollbar-width: none;
+  margin: 0 0 52px;
+}
+.of-ss-row::-webkit-scrollbar { display: none; }
+.of-ss-item {
+  flex: 0 0 auto;
+  width: 200px;
+  scroll-snap-align: start;
+  margin: 0;
+}
+.of-ss-item img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 22px;
+  box-shadow: 0 2px 6px rgba(30,10,70,.1), 0 14px 36px rgba(30,10,70,.14);
+  transition: transform .2s ease;
+}
+.of-ss-item:hover img { transform: translateY(-4px); }
+.of-ss-item figcaption {
+  margin-top: 9px;
+  font-size: 12.5px;
+  font-weight: 650;
+  color: var(--muted);
+  text-align: center;
+}
+
+/* ── Feature grid ───────────────────────────────── */
+.of-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+  margin: 0 0 60px;
+}
+.of-card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 24px 22px;
+  box-shadow: var(--shadow);
+}
+.of-card .icon { font-size: 28px; line-height: 1; margin-bottom: 14px; display: block; }
+.of-card h3 {
+  font-size: 16.5px;
+  font-weight: 780;
+  letter-spacing: -.01em;
+  margin: 0 0 8px;
+  color: #18122e;
+}
+.of-card p { margin: 0; font-size: 14.5px; color: #5d564b; line-height: 1.58; }
+
+/* ── Comparison table ───────────────────────────── */
+.of-table-wrap { overflow-x: auto; margin: 0 0 60px; }
+.of-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14.5px;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  min-width: 500px;
+}
+.of-table th {
+  padding: 14px 16px;
+  text-align: center;
+  font-size: 13px;
+  font-weight: 760;
+  letter-spacing: .02em;
+  border-bottom: 1px solid var(--line);
+  background: var(--bg2);
+  color: var(--muted);
+}
+.of-table th.row-h { text-align: left; }
+.of-table th.of-col { background: var(--of-light); color: var(--of-dark); }
+.of-table td {
+  padding: 13px 16px;
+  text-align: center;
+  border-bottom: 1px solid var(--line);
+  background: var(--card);
+  color: #4f493f;
+  vertical-align: middle;
+}
+.of-table td.row-h { text-align: left; font-weight: 600; color: var(--ink); background: var(--bg); }
+.of-table td.of-col { background: #f8f6ff; }
+.of-table tr:last-child td { border-bottom: none; }
+.ck { color: #22c55e; font-weight: 800; font-size: 16px; }
+.cx { color: #ef4444; font-size: 16px; }
+.cm { font-size: 12.5px; color: var(--muted); }
+
+/* ── Pricing cards ──────────────────────────────── */
+.of-pricing {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 18px;
+  margin: 0 0 60px;
+}
+.of-plan {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  padding: 28px 24px;
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+}
+.of-plan.featured {
+  border-color: var(--of-border);
+  background: linear-gradient(160deg, #f8f6ff 0%, #fff 100%);
+}
+.of-badge {
+  display: inline-block;
+  background: var(--of-mid);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  padding: 4px 11px;
+  border-radius: 99px;
+  margin-bottom: 16px;
+  align-self: flex-start;
+}
+.of-plan h3 {
+  font-size: 21px;
+  font-weight: 820;
+  letter-spacing: -.015em;
+  margin: 0 0 4px;
+  color: #18122e;
+}
+.of-plan .price {
+  font-size: 36px;
+  font-weight: 860;
+  letter-spacing: -.04em;
+  color: var(--of-dark);
+  line-height: 1;
+  margin: 10px 0 4px;
+}
+.of-plan .price-note {
+  font-size: 13px;
+  color: var(--muted);
+  margin: 0 0 22px;
+}
+.of-plan ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  flex: 1;
+}
+.of-plan ul li {
+  font-size: 14px;
+  color: #4f493f;
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+  line-height: 1.4;
+}
+.of-plan ul li::before {
+  content: '✓';
+  color: #22c55e;
+  font-weight: 800;
+  flex-shrink: 0;
+  margin-top: 0px;
+}
+.plan-cta {
+  display: block;
+  text-align: center;
+  background: var(--of-mid);
+  color: #fff;
+  font-weight: 720;
+  font-size: 15px;
+  padding: 13px;
+  border-radius: 13px;
+  text-decoration: none;
+  transition: filter .15s;
+}
+.plan-cta:hover { text-decoration: none; filter: brightness(1.08); }
+.plan-cta.ghost {
+  background: transparent;
+  color: var(--ink);
+  border: 1px solid var(--line);
+}
+
+/* ── FAQ ────────────────────────────────────────── */
+.of-faq { margin: 0 0 60px; }
+.of-faq details { border-bottom: 1px solid var(--line); }
+.of-faq details:first-of-type { border-top: 1px solid var(--line); }
+.of-faq summary {
+  font-size: 15.5px;
+  font-weight: 660;
+  color: var(--ink);
+  padding: 18px 4px;
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  user-select: none;
+}
+.of-faq summary::-webkit-details-marker { display: none; }
+.of-faq summary::after {
+  content: '+';
+  font-size: 22px;
+  font-weight: 300;
+  color: var(--muted);
+  flex-shrink: 0;
+  transition: transform .2s ease;
+  line-height: 1;
+}
+.of-faq details[open] summary::after { transform: rotate(45deg); }
+.of-faq .ans {
+  font-size: 15px;
+  color: #5d564b;
+  line-height: 1.68;
+  padding: 0 4px 20px;
+  margin: 0;
+}
+
+/* ── Final CTA banner ───────────────────────────── */
+.of-banner {
+  background: linear-gradient(135deg, #5b46d6 0%, #7c6cf0 55%, #9d8ff5 100%);
+  border-radius: 24px;
+  padding: 52px 40px;
+  text-align: center;
+  margin: 0 0 48px;
+  position: relative;
+  overflow: hidden;
+}
+.of-banner::before {
+  content: '💧';
+  position: absolute;
+  font-size: 200px;
+  opacity: .07;
+  right: -30px; bottom: -50px;
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+}
+.of-banner h2 {
+  color: #fff;
+  font-size: clamp(22px, 4vw, 38px);
+  font-weight: 860;
+  letter-spacing: -.025em;
+  margin: 0 0 12px;
+}
+.of-banner p {
+  color: rgba(255,255,255,.78);
+  font-size: 18px;
+  margin: 0 0 30px;
+  line-height: 1.5;
+}
+.of-banner .of-store-btn {
+  background: #fff;
+  color: #18122e;
+}
+.of-banner .of-store-btn:hover {
+  background: #f8f6ff;
+}
+
+@media (max-width: 640px) {
+  .of-hero { padding: 36px 22px 32px; }
+  .of-hero::after { display: none; }
+  .of-banner { padding: 40px 22px; }
+  .of-banner::before { display: none; }
+  .of-ss-item { width: 164px; }
+}
+</style>
+
+<!-- ── Structured Data: MobileApplication ─────── -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "MobileApplication",
+  "name": "Outflow: Subscription Tracker",
+  "alternateName": ["Outflow", "Outflow Subscription Tracker"],
+  "description": "A privacy-first subscription tracker for iPhone. Track every recurring cost with on-device AI, get renewal reminders, and see where your money goes — no bank linking, no account, nothing ever leaves your device.",
+  "applicationCategory": "FinanceApplication",
+  "applicationSubCategory": "Personal Finance",
+  "operatingSystem": "iOS 26.0+",
+  "url": "https://beearmy.github.io/outflow/",
+  "downloadUrl": "https://apps.apple.com/app/id6779691937",
+  "identifier": "id6779691937",
+  "screenshot": [
+    "https://beearmy.github.io/outflow/ss/1.png",
+    "https://beearmy.github.io/outflow/ss/2.png",
+    "https://beearmy.github.io/outflow/ss/3.png",
+    "https://beearmy.github.io/outflow/ss/4.png",
+    "https://beearmy.github.io/outflow/ss/5.png"
+  ],
+  "featureList": [
+    "Privacy-first: Data Not Collected App Store label",
+    "On-device AI Smart Paste for receipts and PDFs",
+    "Renewal reminders with 14-day ahead view",
+    "Monthly and yearly spending totals",
+    "Price-change indicators (increase and decrease alerts)",
+    "Payment calendar",
+    "Custom subscription colours",
+    "Siri and App Intents integration",
+    "39-service built-in catalog",
+    "CSV export (Pro)",
+    "No bank linking required",
+    "No account or sign-up needed",
+    "Liquid Glass design for iOS 27"
+  ],
+  "offers": [
+    {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD",
+      "description": "Free tier — up to 5 subscriptions, renewal reminders, monthly and yearly totals, Siri"
+    },
+    {
+      "@type": "Offer",
+      "price": "4.99",
+      "priceCurrency": "USD",
+      "description": "Pro one-time purchase — unlimited subscriptions, AI Smart Paste, price history, CSV export, custom colours"
+    }
+  ],
+  "author": {
+    "@type": "Person",
+    "name": "Andy",
+    "url": "https://beearmy.github.io/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "AndyHQ",
+    "url": "https://beearmy.github.io/"
+  }
+}
+</script>
+
+<!-- ── Structured Data: FAQPage ───────────────── -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Does Outflow require linking my bank account?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No — never. Outflow is designed so you never need to provide bank credentials. You add subscriptions by pasting a receipt, importing a PDF, choosing from the built-in catalog, or typing manually. Nothing is pulled from a bank or third-party data provider."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is Outflow itself a subscription?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Outflow is free for up to 5 subscriptions. Pro is a single one-time purchase at $4.99. There is no monthly fee, no annual renewal, and no catch — the subscription tracker with no subscription."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is Smart Paste and how does it work?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Smart Paste uses Apple Foundation Models — on-device AI built into iOS — to read a pasted receipt, email, or imported PDF and auto-fill the subscription name, price, billing cycle, and renewal date. It runs entirely on your iPhone. Nothing is sent to any external server."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does my data ever leave my iPhone?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Never. Outflow has no backend, no analytics SDK, and no account system. Every subscription and renewal date is stored locally on your device. The App Store privacy label is Data Not Collected — the highest privacy designation Apple offers."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is Outflow a good Bobby app alternative?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. If you used Bobby for its private, manual approach, Outflow is the modern replacement. It adds on-device AI for auto-fill, App Intents for Siri, renewal reminders, price-change tracking, custom colours, and a Liquid Glass design — all with no bank linking. Outflow is actively maintained."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How is Outflow different from Rocket Money?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Rocket Money requires connecting your bank via Plaid and charges $6–$12 per month. Outflow requires no bank account access, stores nothing off your device, and costs either nothing (free tier) or a one-time $4.99 for Pro."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What iPhone or iOS version does Outflow require?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Outflow requires iOS 26.0 or later and is optimised for iOS 27 with Liquid Glass design, App Intents for Siri, and on-device AI. It is iPhone-only. iPad and Mac versions are on the roadmap."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can Outflow track bills as well as subscriptions?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Outflow tracks any recurring payment — streaming services, gym memberships, insurance, software licences, rent, utilities, and more. Weekly, monthly, or yearly billing cycles are all supported."
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
 <div class="wrap">
+
   <nav class="nav">
     <a class="brand" href="/"><span class="logo">A</span> AndyHQ</a>
     <span class="meta"><a href="/">← All apps</a></span>
   </nav>
 
-  <main class="page">
-    <div class="app-hero">
-      <div class="icon" style="background:#efecfe">💧</div>
-      <div>
-        <span class="eyebrow">iOS app</span>
-        <h1 style="margin:6px 0 0">Outflow: Subscription Tracker</h1>
+  <main id="main">
+
+    <!-- ════════════════════════════════════════════
+         HERO
+    ═════════════════════════════════════════════ -->
+    <section class="of-hero" aria-label="Outflow app introduction">
+
+      <div class="of-live-pill" role="status">
+        <span class="of-live-dot" aria-hidden="true"></span>
+        Live on the App Store
       </div>
-    </div>
-    <p class="lead"><strong>Know exactly what you pay for.</strong> Outflow is a privacy-first subscription tracker for iPhone: track every recurring cost, get reminders before renewals, and see where the money goes — with no bank linking, no account, and nothing ever leaving your device.</p>
 
-    <ul class="feat">
-      <li>🔒 <strong>Private by design</strong> — everything stays on your iPhone</li>
-      <li>✨ <strong>Smart Paste</strong> — paste a receipt, or pick a screenshot or PDF, and on-device intelligence fills in the details</li>
-      <li>🔔 <strong>Renewal reminders</strong> with clear monthly &amp; yearly totals</li>
-      <li>💜 <strong>Fair pricing</strong> — free for up to 5 subscriptions; Pro is a one-time purchase, never a subscription</li>
-    </ul>
+      <h1>The subscription tracker<br><em>that isn't one.</em></h1>
 
-    <div class="btnrow">
-      <a class="btn" href="https://apps.apple.com/app/id6779691937">Download on the App Store</a>
-      <a class="btn ghost" href="/outflow/support/">Support</a>
-      <a class="btn ghost" href="/outflow/privacy/">Privacy Policy</a>
+      <p class="lead">
+        Know exactly what you pay for. Outflow tracks every subscription and bill on your iPhone with on-device AI — no bank linking, no account, and nothing ever leaves your device.
+      </p>
+
+      <div class="of-cta-row">
+        <a href="https://apps.apple.com/app/id6779691937"
+           class="of-store-btn"
+           rel="noopener"
+           aria-label="Download Outflow on the App Store">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="white" aria-hidden="true" focusable="false">
+            <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+          </svg>
+          <span>
+            <span class="stl">Download on the</span>
+            <span class="stb">App Store</span>
+          </span>
+        </a>
+
+        <div class="of-hero-meta">
+          <span class="of-stars" aria-label="5 star rating">★★★★★</span>
+          <span class="of-sep" aria-hidden="true">·</span>
+          <span>Free</span>
+          <span class="of-sep" aria-hidden="true">·</span>
+          <span>Pro from $4.99</span>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ════════════════════════════════════════════
+         STAT STRIP
+    ═════════════════════════════════════════════ -->
+    <dl class="of-strip" aria-label="Key app facts">
+      <div class="of-stat">
+        <dt class="lbl">servers with your data</dt>
+        <dd class="num">0</dd>
+      </div>
+      <div class="of-stat">
+        <dt class="lbl">subscriptions free, forever</dt>
+        <dd class="num">5</dd>
+      </div>
+      <div class="of-stat">
+        <dt class="lbl">one-time Pro (no renewal)</dt>
+        <dd class="num">$4.99</dd>
+      </div>
+      <div class="of-stat">
+        <dt class="lbl">iOS, Liquid Glass design</dt>
+        <dd class="num">26+</dd>
+      </div>
+    </dl>
+
+    <!-- ════════════════════════════════════════════
+         SCREENSHOTS
+    ═════════════════════════════════════════════ -->
+    <p class="of-sh">App screenshots</p>
+
+    <div class="of-ss-row" role="list" aria-label="Outflow app screenshots">
+
+      <figure class="of-ss-item" role="listitem">
+        <img src="/outflow/ss/1.png"
+             alt="Outflow overview screen showing monthly total spending and subscriptions due for renewal"
+             width="600" height="1300" loading="lazy">
+        <figcaption>Know what you pay</figcaption>
+      </figure>
+
+      <figure class="of-ss-item" role="listitem">
+        <img src="/outflow/ss/2.png"
+             alt="Outflow renewal reminders screen with upcoming subscription renewal dates"
+             width="600" height="1300" loading="lazy">
+        <figcaption>Never caught short</figcaption>
+      </figure>
+
+      <figure class="of-ss-item" role="listitem">
+        <img src="/outflow/ss/3.png"
+             alt="Outflow Smart Paste — paste a receipt and on-device AI fills in all subscription details"
+             width="600" height="1300" loading="lazy">
+        <figcaption>Paste. Done.</figcaption>
+      </figure>
+
+      <figure class="of-ss-item" role="listitem">
+        <img src="/outflow/ss/4.png"
+             alt="Outflow subscription list with colour-coded cards and price change indicators"
+             width="600" height="1300" loading="lazy">
+        <figcaption>No bank linking. Ever.</figcaption>
+      </figure>
+
+      <figure class="of-ss-item" role="listitem">
+        <img src="/outflow/ss/5.png"
+             alt="Outflow Pro one-time purchase screen — pay once and own it forever"
+             width="600" height="1300" loading="lazy">
+        <figcaption>Pay once, own it.</figcaption>
+      </figure>
+
     </div>
+
+    <!-- ════════════════════════════════════════════
+         FEATURES
+    ═════════════════════════════════════════════ -->
+    <p class="of-sh">What makes it different</p>
+    <h2 class="of-h2">Built to respect you,<br>not monetise you.</h2>
+    <p class="of-intro">Most subscription trackers charge monthly fees or demand your bank credentials. Outflow does neither. Track everything privately, and pay once — or not at all.</p>
+
+    <div class="of-grid">
+
+      <div class="of-card">
+        <span class="of-card-icon icon" aria-hidden="true">🔒</span>
+        <h3>Private by architecture</h3>
+        <p>Everything lives on your iPhone. No account to create, no server that could be breached, no analytics calling home. App Store Privacy label: <strong>Data Not Collected</strong> — the rarest badge in finance apps.</p>
+      </div>
+
+      <div class="of-card">
+        <span class="of-card-icon icon" aria-hidden="true">✨</span>
+        <h3>Smart Paste</h3>
+        <p>Paste a confirmation email, screenshot, or import a PDF. On-device AI (Apple Foundation Models) reads it and fills in the name, price, billing cycle, and renewal date automatically — without sending anything anywhere.</p>
+      </div>
+
+      <div class="of-card">
+        <span class="of-card-icon icon" aria-hidden="true">🔔</span>
+        <h3>Renewal reminders &amp; price alerts</h3>
+        <p>See renewals due in the next 14 days, your total monthly and yearly outgoings, and colour-coded price-change alerts (red ↑ when a price rises, green ↓ when it falls). Never get caught by an unexpected charge again.</p>
+      </div>
+
+      <div class="of-card">
+        <span class="of-card-icon icon" aria-hidden="true">💜</span>
+        <h3>Pay once, own it</h3>
+        <p>Free for up to 5 subscriptions — genuinely useful, not a limited demo. Pro is a single one-time purchase with no annual renewal and no upsell. A subscription tracker that charges no subscription.</p>
+      </div>
+
+      <div class="of-card">
+        <span class="of-card-icon icon" aria-hidden="true">🎙️</span>
+        <h3>Siri &amp; App Intents</h3>
+        <p>"Hey Siri, what renews this week?" Outflow is fully wired to iOS App Intents — Siri and Shortcuts can query your subscriptions, surface reminders, and run automations right from the lock screen.</p>
+      </div>
+
+      <div class="of-card">
+        <span class="of-card-icon icon" aria-hidden="true">🎨</span>
+        <h3>Designed for modern iOS</h3>
+        <p>Liquid Glass design, Dynamic Type, SF Symbols, custom subscription colours, Dark Mode with appearance override, payment calendar. Outflow looks and feels like Apple built it.</p>
+      </div>
+
+    </div>
+
+    <!-- ════════════════════════════════════════════
+         COMPARISON
+    ═════════════════════════════════════════════ -->
+    <p class="of-sh">How it compares</p>
+    <h2 class="of-h2">The tracker that does it right.</h2>
+    <p class="of-intro">Rocket Money links your bank and charges monthly. Bobby was abandoned. Outflow is the modern, private, pay-once alternative.</p>
+
+    <div class="of-table-wrap">
+      <table class="of-table" aria-label="Comparison of Outflow, Rocket Money, and Bobby">
+        <thead>
+          <tr>
+            <th class="row-h" scope="col">Feature</th>
+            <th scope="col">Rocket Money</th>
+            <th scope="col">Bobby</th>
+            <th class="of-col" scope="col">Outflow 💧</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="row-h">Bank linking required</td>
+            <td><span class="cx" aria-label="No">✕</span> <span class="cm">Plaid required</span></td>
+            <td><span class="ck" aria-label="Yes">✓</span> <span class="cm">Not required</span></td>
+            <td class="of-col"><span class="ck">✓</span> <strong>Never, by design</strong></td>
+          </tr>
+          <tr>
+            <td class="row-h">On-device AI entry</td>
+            <td><span class="cx">✕</span></td>
+            <td><span class="cx">✕</span></td>
+            <td class="of-col"><span class="ck">✓</span> <strong>Smart Paste</strong></td>
+          </tr>
+          <tr>
+            <td class="row-h">Data stored on-device only</td>
+            <td><span class="cx">✕</span> <span class="cm">Cloud</span></td>
+            <td><span class="ck">✓</span> <span class="cm">Local</span></td>
+            <td class="of-col"><span class="ck">✓</span> <strong>100% on-device</strong></td>
+          </tr>
+          <tr>
+            <td class="row-h">Pricing model</td>
+            <td><span class="cm">$6–$12 / month</span></td>
+            <td><span class="cm">One-time, abandoned</span></td>
+            <td class="of-col"><strong>Free + $4.99 once</strong></td>
+          </tr>
+          <tr>
+            <td class="row-h">Renewal reminders</td>
+            <td><span class="ck">✓</span></td>
+            <td><span class="ck">✓</span></td>
+            <td class="of-col"><span class="ck">✓</span> <strong>+ price-change alerts</strong></td>
+          </tr>
+          <tr>
+            <td class="row-h">Siri / App Intents</td>
+            <td><span class="cx">✕</span></td>
+            <td><span class="cx">✕</span></td>
+            <td class="of-col"><span class="ck">✓</span> <strong>iOS 27 native</strong></td>
+          </tr>
+          <tr>
+            <td class="row-h">Actively maintained</td>
+            <td><span class="ck">✓</span></td>
+            <td><span class="cx">✕</span> <span class="cm">Abandoned</span></td>
+            <td class="of-col"><span class="ck">✓</span> <strong>Regular updates</strong></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- ════════════════════════════════════════════
+         PRICING
+    ═════════════════════════════════════════════ -->
+    <p class="of-sh">Pricing</p>
+    <h2 class="of-h2">Simple. Fair. Once.</h2>
+    <p class="of-intro">The free tier is genuinely useful. Pro is a one-time unlock — no subscription, no renewal, no catch.</p>
+
+    <div class="of-pricing">
+
+      <div class="of-plan">
+        <h3>Free</h3>
+        <div class="price">$0</div>
+        <p class="price-note">Forever. No time limit.</p>
+        <ul>
+          <li>Up to 5 subscriptions</li>
+          <li>Renewal reminders</li>
+          <li>Monthly &amp; yearly totals</li>
+          <li>Payment calendar</li>
+          <li>Siri &amp; Shortcuts</li>
+          <li>39-service built-in catalog</li>
+        </ul>
+        <a href="https://apps.apple.com/app/id6779691937"
+           class="plan-cta ghost"
+           rel="noopener"
+           aria-label="Download Outflow free on the App Store">
+          Download free →
+        </a>
+      </div>
+
+      <div class="of-plan featured">
+        <span class="of-badge">Founder price</span>
+        <h3>Pro</h3>
+        <div class="price">$4.99</div>
+        <p class="price-note">One-time purchase — pay once, own forever.</p>
+        <ul>
+          <li>Everything in Free</li>
+          <li>Unlimited subscriptions</li>
+          <li>AI Smart Paste (on-device)</li>
+          <li>Price-change history &amp; alerts</li>
+          <li>Custom subscription colours</li>
+          <li>CSV export</li>
+          <li>What's New feed</li>
+        </ul>
+        <a href="https://apps.apple.com/app/id6779691937"
+           class="plan-cta"
+           rel="noopener"
+           aria-label="Get Outflow Pro on the App Store for $4.99">
+          Get Pro — $4.99 once
+        </a>
+      </div>
+
+    </div>
+
+    <!-- ════════════════════════════════════════════
+         FAQ  — LLM + SEO optimised
+    ═════════════════════════════════════════════ -->
+    <p class="of-sh">Questions &amp; answers</p>
+    <h2 class="of-h2">Everything you want to know.</h2>
+
+    <div class="of-faq" itemscope itemtype="https://schema.org/FAQPage">
+
+      <details itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+        <summary itemprop="name">Does Outflow require linking my bank account?</summary>
+        <p class="ans" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+          <span itemprop="text">No — never. Outflow is built on the principle that you should never need to hand over bank credentials to understand your own spending. Add subscriptions by pasting a receipt, importing a PDF, picking from the built-in service catalog, or typing manually. Nothing is ever pulled from a bank, Plaid, or any other financial data provider.</span>
+        </p>
+      </details>
+
+      <details itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+        <summary itemprop="name">Is Outflow itself a subscription?</summary>
+        <p class="ans" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+          <span itemprop="text">No. Outflow is free to download and free for up to 5 subscriptions. Pro is a single one-time purchase — currently $4.99. There is no monthly fee, no annual renewal, and no upsell. It would be pretty odd to charge a recurring subscription for an app whose whole purpose is to help you spot them.</span>
+        </p>
+      </details>
+
+      <details itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+        <summary itemprop="name">What is Smart Paste and how does it work?</summary>
+        <p class="ans" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+          <span itemprop="text">Smart Paste uses Apple Foundation Models — the on-device AI built into modern iOS — to read a pasted receipt, email confirmation, or imported PDF, then automatically fill in the subscription name, price, billing cycle, and renewal date. All inference runs on your iPhone. Nothing is sent to any external cloud API or server. It works even in Airplane Mode.</span>
+        </p>
+      </details>
+
+      <details itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+        <summary itemprop="name">Does any of my financial data ever leave my iPhone?</summary>
+        <p class="ans" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+          <span itemprop="text">Never. Outflow has no backend server, no analytics SDK, and no account system. Every subscription, amount, and date is stored locally on your device in SwiftData. The App Store privacy label is "Data Not Collected" — the highest privacy designation Apple offers, and one very few finance apps can honestly claim.</span>
+        </p>
+      </details>
+
+      <details itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+        <summary itemprop="name">Is Outflow a good Bobby app alternative?</summary>
+        <p class="ans" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+          <span itemprop="text">Yes. Outflow is built for users who loved Bobby's private, manual approach but want a modern replacement. It keeps the same local-only philosophy and adds everything Bobby lacked: on-device AI for auto-fill, App Intents for Siri, renewal reminders, price-change tracking, custom colours, and a design built for current iOS. Unlike Bobby, Outflow is actively maintained and updated regularly.</span>
+        </p>
+      </details>
+
+      <details itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+        <summary itemprop="name">How is Outflow different from Rocket Money?</summary>
+        <p class="ans" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+          <span itemprop="text">Rocket Money (formerly Truebill) requires you to connect your bank account via Plaid and charges $6–$12 per month. Outflow requires no bank account connection, stores nothing off your device, and costs either nothing (free tier) or a one-time $4.99 for Pro. If privacy, cost, or bank-linking is a concern, Outflow is the alternative.</span>
+        </p>
+      </details>
+
+      <details itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+        <summary itemprop="name">What iPhone and iOS version does Outflow require?</summary>
+        <p class="ans" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+          <span itemprop="text">Outflow requires iOS 26.0 or later and is optimised for iOS 27 with full Liquid Glass design, App Intents for the new Siri, and on-device AI via Apple Foundation Models. It is currently iPhone-only. iPad and Mac versions are on the roadmap.</span>
+        </p>
+      </details>
+
+      <details itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+        <summary itemprop="name">Can Outflow track bills and recurring payments, not just subscriptions?</summary>
+        <p class="ans" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+          <span itemprop="text">Yes. Outflow tracks any recurring cost — streaming services, gym memberships, insurance, software licences, rent, utilities, internet, and more. Weekly, monthly, quarterly, and yearly billing cycles are all supported. You see your total monthly and yearly outgoings across everything.</span>
+        </p>
+      </details>
+
+    </div>
+
+    <!-- ════════════════════════════════════════════
+         FINAL CTA
+    ═════════════════════════════════════════════ -->
+    <section class="of-banner" aria-label="Download Outflow">
+      <h2>Start knowing what you pay for.</h2>
+      <p>Free to download. No bank linking. No account. Just clarity.</p>
+      <div style="display:flex;justify-content:center">
+        <a href="https://apps.apple.com/app/id6779691937"
+           class="of-store-btn"
+           rel="noopener"
+           aria-label="Download Outflow on the App Store">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="#18122e" aria-hidden="true" focusable="false">
+            <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+          </svg>
+          <span>
+            <span class="stl">Download on the</span>
+            <span class="stb">App Store</span>
+          </span>
+        </a>
+      </div>
+    </section>
+
   </main>
 
   <footer>
     <span>© 2026 AndyHQ</span>
-    <span><a href="/outflow/support/">Support</a> · <a href="/outflow/privacy/">Privacy</a> · <a href="/">AndyHQ</a></span>
+    <span>
+      <a href="/outflow/support/">Support</a> ·
+      <a href="/outflow/privacy/">Privacy Policy</a> ·
+      <a href="https://apps.apple.com/app/id6779691937" rel="noopener">App Store</a> ·
+      <a href="/">AndyHQ</a>
+    </span>
   </footer>
+
 </div>
 </body>
 </html>
