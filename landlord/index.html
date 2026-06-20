@@ -82,7 +82,7 @@
     {
       "@type": "Question",
       "name": "What does Landlord Assistant: Rent do?",
-      "acceptedAnswer": { "@type": "Answer", "text": "It keeps your homes, lodger details, rent records and paperwork in one workspace on iPhone and iPad. You can track active and archived properties, follow your rent rhythm, attach proof and documents, and keep safety and paperwork tasks visible." }
+      "acceptedAnswer": { "@type": "Answer", "text": "It keeps your homes, lodger details, rent records and paperwork in one workspace on iPhone and iPad. You can track active and archived properties, follow your rent rhythm (early, on time, late or missed), and keep Vault items like Right to Rent checks, gas and electrical safety, and smoke and CO alarms filed with proof." }
     },
     {
       "@type": "Question",
@@ -142,25 +142,22 @@
   .ll-pill{display:inline-flex;align-items:center;gap:6px;font-size:13.5px;font-weight:650;color:#5d564b;
     background:#fff;border:1px solid var(--line);border-radius:99px;padding:7px 14px}
 
-  /* hero mock card */
+  /* hero phone frame (real screenshot) */
   .ll-mock-wrap{display:flex;justify-content:center}
-  .ll-mock{width:280px;background:#fff;border-radius:22px;border:1px solid var(--line);box-shadow:0 4px 10px rgba(60,40,20,.06),0 30px 60px rgba(60,40,20,.12);
-    padding:20px;animation:llFloat 6s ease-in-out infinite}
+  .ll-phone{width:260px;background:#15140f;border-radius:42px;padding:9px;box-shadow:0 4px 10px rgba(60,40,20,.08),0 36px 70px rgba(60,40,20,.22);
+    animation:llFloat 6s ease-in-out infinite}
+  .ll-phone img{display:block;width:100%;border-radius:34px}
   @keyframes llFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
-  @media (prefers-reduced-motion:reduce){.ll-mock{animation:none}}
-  .ll-mock-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
-  .ll-mock-home{display:flex;align-items:center;gap:10px;font-weight:760;font-size:14.5px;color:var(--ink)}
-  .ll-mock-home .ic{width:34px;height:34px;border-radius:10px;background:#e4f6ee;display:grid;place-items:center;font-size:16px}
-  .ll-mock-tag{font-size:11px;font-weight:700;color:var(--muted);background:#f5efe5;border-radius:99px;padding:3px 9px}
-  .ll-mock-person{display:flex;align-items:center;gap:10px;background:var(--bg);border-radius:13px;padding:10px 12px;margin-bottom:10px}
-  .ll-mock-avatar{width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,var(--accent),#f6b65a);color:#fff;
-    display:grid;place-items:center;font-size:12px;font-weight:700;flex:none}
-  .ll-mock-name{font-size:13px;font-weight:700;color:var(--ink)}
-  .ll-mock-status{margin-left:auto;font-size:11px;font-weight:700;color:#b07d06;background:#fff7da;border-radius:99px;padding:3px 9px}
-  .ll-mock-check{display:flex;align-items:center;gap:8px;font-size:12.5px;color:#5d564b;padding:5px 2px}
-  .ll-mock-check .dot{width:16px;height:16px;border-radius:50%;display:grid;place-items:center;font-size:9px;flex:none}
-  .ll-mock-check.done .dot{background:#2faf7e;color:#fff}
-  .ll-mock-check.todo .dot{background:#f0e9dc;color:transparent}
+  @media (prefers-reduced-motion:reduce){.ll-phone{animation:none}}
+
+  /* gallery */
+  .ll-gallery{display:flex;gap:18px;overflow-x:auto;padding:6px 2px 14px;scroll-snap-type:x proximity;-webkit-overflow-scrolling:touch}
+  .ll-gallery::-webkit-scrollbar{height:6px}
+  .ll-gallery::-webkit-scrollbar-thumb{background:var(--line);border-radius:99px}
+  .ll-gitem{flex:none;width:182px;scroll-snap-align:start;text-align:center}
+  .ll-gitem .ll-phone{width:182px;border-radius:32px;padding:7px;animation:none}
+  .ll-gitem .ll-phone img{border-radius:25px}
+  .ll-gitem p{margin:12px 0 0;font-size:13.5px;font-weight:700;color:var(--ink)}
 
   /* feature grid */
   .ll-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
@@ -262,21 +259,8 @@
         </div>
       </div>
 
-      <div class="ll-mock-wrap" aria-hidden="true">
-        <div class="ll-mock">
-          <div class="ll-mock-row">
-            <div class="ll-mock-home"><span class="ic">🏠</span> 14 Maple Street</div>
-            <span class="ll-mock-tag">Active</span>
-          </div>
-          <div class="ll-mock-person">
-            <span class="ll-mock-avatar">JD</span>
-            <span class="ll-mock-name">Jess D. — Room 2</span>
-            <span class="ll-mock-status">Rent due Fri</span>
-          </div>
-          <div class="ll-mock-check done"><span class="dot">✓</span> Tenancy agreement attached</div>
-          <div class="ll-mock-check done"><span class="dot">✓</span> Smoke alarm checked</div>
-          <div class="ll-mock-check todo"><span class="dot"></span> Deposit protected</div>
-        </div>
+      <div class="ll-mock-wrap">
+        <div class="ll-phone"><img src="/landlord/ss/today.jpg" alt="Landlord Assistant: Rent — Today screen showing Risk Radar, rent rhythm and tax pack" width="260" height="526" loading="eager"></div>
       </div>
     </div>
   </div>
@@ -292,33 +276,49 @@
         <div class="ll-card">
           <div class="ic">🏠</div>
           <h3>Homes</h3>
-          <p>Track active and archived properties, so past lets stay on record without cluttering your current view.</p>
+          <p>Active and archived properties, with gas, electrical and safety status visible at a glance.</p>
         </div>
         <div class="ll-card">
           <div class="ic">👥</div>
-          <h3>Lodgers &amp; people</h3>
-          <p>Keep lodger and tenant details together with the home they're linked to — no separate contacts app needed.</p>
+          <h3>People</h3>
+          <p>Lodgers and tenants linked to the right home, with next-of-kin contacts saved alongside them.</p>
         </div>
         <div class="ll-card">
-          <div class="ic">📅</div>
+          <div class="ic">💷</div>
           <h3>Rent rhythm</h3>
-          <p>Follow rent records over time, so it's easy to see what's been paid and what's coming up.</p>
+          <p>Every payment marked early, on time, late or missed, with expected vs. recorded amounts side by side.</p>
         </div>
         <div class="ll-card">
-          <div class="ic">📎</div>
-          <h3>Paperwork &amp; proof</h3>
-          <p>Attach documents and keep proof against the right home or person, instead of a folder of unsorted PDFs.</p>
+          <div class="ic">🗂️</div>
+          <h3>Vault</h3>
+          <p>Right to Rent checks, gas safety, electrical safety, smoke &amp; CO alarms and furniture fire safety — filed with proof.</p>
         </div>
         <div class="ll-card">
-          <div class="ic">✅</div>
-          <h3>Safety checklists</h3>
-          <p>Keep key safety and paperwork tasks visible, so nothing important quietly slips past its date.</p>
+          <div class="ic">📡</div>
+          <h3>Risk Radar</h3>
+          <p>Surfaces what needs your attention first, instead of leaving you to remember it all yourself.</p>
         </div>
         <div class="ll-card">
           <div class="ic">🔒</div>
           <h3>Privacy by design</h3>
           <p>No data collected, no third-party advertising SDKs. Your records are yours.</p>
         </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SCREENSHOT GALLERY -->
+  <div class="ll-band alt">
+    <div class="ll-inner">
+      <p class="ll-kicker">See it in action</p>
+      <h2 class="ll-h2">What it actually looks like</h2>
+      <p class="ll-sub">No stock photos — these are real screens from the app.</p>
+
+      <div class="ll-gallery">
+        <div class="ll-gitem"><div class="ll-phone"><img src="/landlord/ss/homes.jpg" alt="Homes tab showing active properties with safety status" width="182" height="368" loading="lazy"></div><p>Homes</p></div>
+        <div class="ll-gitem"><div class="ll-phone"><img src="/landlord/ss/people.jpg" alt="People tab showing lodgers and tenants with rent amounts" width="182" height="368" loading="lazy"></div><p>People</p></div>
+        <div class="ll-gitem"><div class="ll-phone"><img src="/landlord/ss/rent.jpg" alt="Rent rhythm screen showing early, on time, late and missed payments" width="182" height="368" loading="lazy"></div><p>Rent rhythm</p></div>
+        <div class="ll-gitem"><div class="ll-phone"><img src="/landlord/ss/vault.jpg" alt="Vault screen showing filed safety and compliance documents" width="182" height="368" loading="lazy"></div><p>Vault</p></div>
       </div>
     </div>
   </div>
@@ -419,7 +419,7 @@
       <div class="ll-faq-list">
         <details class="ll-faq">
           <summary>What does Landlord Assistant: Rent do? <span class="chev">⌄</span></summary>
-          <p>It keeps your homes, lodger details, rent records and paperwork in one workspace on iPhone and iPad. You can track active and archived properties, follow your rent rhythm, attach proof and documents, and keep safety and paperwork tasks visible.</p>
+          <p>It keeps your homes, lodger details, rent records and paperwork in one workspace on iPhone and iPad. You can track active and archived properties, follow your rent rhythm (early, on time, late or missed), and keep Vault items like Right to Rent checks, gas and electrical safety, and smoke and CO alarms filed with proof.</p>
         </details>
         <details class="ll-faq">
           <summary>Is Landlord Assistant: Rent free? <span class="chev">⌄</span></summary>
