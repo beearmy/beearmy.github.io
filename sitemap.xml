@@ -1,45 +1,90 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+  <!-- AndyHQ Home -->
   <url>
     <loc>https://beearmy.github.io/</loc>
-    <lastmod>2026-06-13</lastmod>
+    <lastmod>2026-06-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+
+  <!-- Landlord Assistant: Rent (Geo-optimised for UK) -->
   <url>
     <loc>https://beearmy.github.io/landlord/</loc>
     <lastmod>2026-06-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en-GB" href="https://beearmy.github.io/landlord/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://beearmy.github.io/landlord/"/>
+    <image:image>
+      <image:loc>https://beearmy.github.io/landlord/og-image.png</image:loc>
+      <image:title>Landlord Assistant: Rent — UK Landlord App</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://beearmy.github.io/landlord/ss/today.jpg</image:loc>
+      <image:caption>Risk Radar and rent rhythm overview for UK landlords</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://beearmy.github.io/landlord/ss/homes.jpg</image:loc>
+      <image:caption>Property management and safety document tracking</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://beearmy.github.io/landlord/ss/rent.jpg</image:loc>
+      <image:caption>Rent tracking and payment history</image:caption>
+    </image:image>
   </url>
+
   <url>
     <loc>https://beearmy.github.io/landlord/privacy/</loc>
-    <lastmod>2026-06-19</lastmod>
+    <lastmod>2026-06-20</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="en-GB" href="https://beearmy.github.io/landlord/privacy/"/>
   </url>
+
   <url>
     <loc>https://beearmy.github.io/landlord/support/</loc>
-    <lastmod>2026-06-19</lastmod>
+    <lastmod>2026-06-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.4</priority>
+    <xhtml:link rel="alternate" hreflang="en-GB" href="https://beearmy.github.io/landlord/support/"/>
   </url>
+
+  <!-- Outflow: Subscription Tracker -->
   <url>
     <loc>https://beearmy.github.io/outflow/</loc>
-    <lastmod>2026-06-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-06-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://beearmy.github.io/outflow/ss/1.png</image:loc>
+      <image:title>Outflow: Subscription Tracker for iPhone</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://beearmy.github.io/outflow/ss/3.png</image:loc>
+      <image:caption>Smart Paste — Private on-device AI subscription entry</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://beearmy.github.io/outflow/ss/4.png</image:loc>
+      <image:caption>Subscription list and price change indicators</image:caption>
+    </image:image>
   </url>
+
   <url>
     <loc>https://beearmy.github.io/outflow/privacy/</loc>
-    <lastmod>2026-06-19</lastmod>
+    <lastmod>2026-06-20</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
+
   <url>
     <loc>https://beearmy.github.io/outflow/support/</loc>
-    <lastmod>2026-06-19</lastmod>
+    <lastmod>2026-06-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.4</priority>
   </url>
+
 </urlset>
