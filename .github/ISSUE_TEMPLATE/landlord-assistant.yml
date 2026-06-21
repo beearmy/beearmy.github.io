@@ -1,56 +1,78 @@
-name: Landlord Assistant support
+name: Landlord Assistant: Rent
 description: "Report a bug, ask a question, or request a feature for Landlord Assistant: Rent"
 title: "[Landlord] "
 labels: ["support", "app:landlord"]
 body:
   - type: markdown
     attributes:
-      value: "Thanks for reporting this. Add the useful bits below and the ticket will be labelled for Landlord Assistant automatically."
+      value: "Thanks for reporting this. This form labels the ticket for Landlord Assistant: Rent automatically. Focus on what you saw in the app and what you expected to happen."
   - type: dropdown
     id: request_type
     attributes:
-      label: What type of request is this?
+      label: What do you need?
       options:
-        - Bug
-        - Feature request
-        - iCloud sync
-        - Purchase or subscription
+        - Something is broken
+        - I expected a different result
+        - I want a feature
+        - iCloud sync or restore help
+        - Purchase or subscription help
         - Privacy question
         - General question
+    validations:
+      required: true
+  - type: dropdown
+    id: app_area
+    attributes:
+      label: Where in the app?
+      options:
+        - Today
+        - Homes
+        - People
+        - Rent
+        - Vault / paperwork
+        - Tax Pack
+        - Risk Radar / tasks
+        - iCloud sync
+        - Settings
+        - Purchases / Pro
+        - App Store / TestFlight
+        - Not sure
     validations:
       required: true
   - type: textarea
     id: summary
     attributes:
-      label: What happened or what would you like?
-      description: A short plain-English description is perfect.
-      placeholder: "Example: Rent shows late when the payment is due on the last Friday of the month."
+      label: What happened?
+      description: Keep it short and plain English. One issue per ticket is best.
+      placeholder: "Example: I uploaded a gas safety PDF in Vault but there was no obvious way to save it."
     validations:
       required: true
   - type: textarea
     id: steps
     attributes:
-      label: Steps to reproduce, if it is a bug
+      label: How can we make it happen again?
+      description: Add steps only if you know them.
       placeholder: |
-        1. Open People
-        2. Edit a person
-        3. Set rent date...
+        1. Open Vault
+        2. Tap Add paperwork
+        3. Upload a PDF
     validations:
       required: false
   - type: textarea
     id: expected
     attributes:
-      label: What did you expect?
-      placeholder: "What should the app have done instead?"
+      label: What should have happened?
+      placeholder: "Example: I expected a clear Save paperwork button and for the document to appear in Vault."
     validations:
       required: false
   - type: dropdown
     id: impact
     attributes:
-      label: How much is this blocking you?
+      label: How much does this affect you?
       options:
         - Not blocking, just annoying
-        - Blocking part of the app
+        - Slows me down
+        - Blocks part of the app
         - Blocking me from using the app
     validations:
       required: true
@@ -72,6 +94,6 @@ body:
     id: screenshots
     attributes:
       label: Screenshots or extra context
-      description: Drag screenshots here if they help explain the issue.
+      description: Drag screenshots, screen recordings, or a short note here if it helps.
     validations:
       required: false
