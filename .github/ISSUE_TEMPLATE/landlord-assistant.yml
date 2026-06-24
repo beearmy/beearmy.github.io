@@ -5,7 +5,7 @@ labels: ["support", "app:landlord"]
 body:
   - type: markdown
     attributes:
-      value: "Thanks for reporting this. This form labels the ticket for Landlord Assistant: Rent automatically. Focus on what you saw in the app and what you expected to happen."
+      value: "Thanks for reporting this. This form automatically adds the app:landlord tag so it lands in the Landlord Assistant queue. Please do not attach private tenancy documents, addresses, or payment details."
   - type: dropdown
     id: request_type
     attributes:
