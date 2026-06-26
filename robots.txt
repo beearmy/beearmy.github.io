@@ -1,4 +1,35 @@
+# AndyHQ — beearmy.github.io
+# All content is public. AI crawlers welcome.
+
 User-agent: *
+Allow: /
+
+# LLM and AI search crawlers — explicitly welcomed
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: GoogleExtendedBot
+Allow: /
+
+User-agent: cohere-ai
+Allow: /
+
+User-agent: Meta-ExternalAgent
 Allow: /
 
 Sitemap: https://beearmy.github.io/sitemap.xml
