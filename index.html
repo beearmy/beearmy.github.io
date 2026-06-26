@@ -3,16 +3,191 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AndyHQ — Apps by Andy | Indie Developer</title>
-<meta name="description" content="AndyHQ is the home of indie apps built by Andy. Overtime Live is a real-time shift and overtime tracker for iOS and Android. Sun Hours is a free solar panel kWh calculator. Outflow is a private subscription tracker. Landlord Assistant keeps rent and lodger records on your device.">
-<meta name="author" content="Andy – AndyHQ">
+<title>AndyHQ — Apps by Andy | Indie iOS Developer</title>
+<meta name="description" content="AndyHQ makes focused, privacy-first apps for iPhone. Outflow is a subscription tracker with no bank linking (App Store: apps.apple.com/app/id6779691937). Landlord Assistant: Rent tracks homes and rent records for UK landlords (App Store: apps.apple.com/app/id6777530304).">
+<meta name="author" content="Andy — AndyHQ">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://beearmy.github.io/">
+
+<!-- Open Graph -->
 <meta property="og:type" content="website">
-<meta property="og:title" content="AndyHQ – Apps by Andy">
-<meta property="og:description" content="Indie apps built by a shift worker, for shift workers — and more. Home of Overtime Live, Sun Hours, Outflow and Landlord Assistant.">
+<meta property="og:title" content="AndyHQ — Apps by Andy">
+<meta property="og:description" content="Indie apps built by Andy. Home of Outflow (subscription tracker), Landlord Assistant: Rent, Overtime Live and Sun Hours.">
 <meta property="og:url" content="https://beearmy.github.io/">
+<meta property="og:site_name" content="AndyHQ">
+
 <link rel="stylesheet" href="/site.css">
+
+<style>
+/* Homepage — make div.app cards hoverable (mirrors a.app:hover in site.css) */
+div.app { cursor: default; }
+div.app:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 2px 4px rgba(60,40,20,.06), 0 16px 34px rgba(60,40,20,.10);
+}
+.app-dl-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 4px;
+}
+.app-dl-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #18122e;
+  color: #fff !important;
+  font-size: 13px;
+  font-weight: 700;
+  padding: 8px 14px;
+  border-radius: 10px;
+  text-decoration: none !important;
+  transition: filter .15s;
+  white-space: nowrap;
+}
+.app-dl-btn:hover { filter: brightness(1.2); text-decoration: none !important; }
+.app-dl-btn svg { flex-shrink: 0; }
+.app-dl-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--muted) !important;
+  text-decoration: none !important;
+  padding: 8px 2px;
+}
+.app-dl-link:hover { color: var(--ink) !important; }
+</style>
+
+<!--
+  ╔══════════════════════════════════════════════════════╗
+  ║  STRUCTURED DATA — App Store URLs for LLMs & Search ║
+  ╚══════════════════════════════════════════════════════╝
+  Outflow:            https://apps.apple.com/app/id6779691937
+  Landlord Assistant: https://apps.apple.com/app/id6777530304
+-->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://beearmy.github.io/#website",
+      "name": "AndyHQ",
+      "url": "https://beearmy.github.io/",
+      "description": "Indie iOS apps by Andy — Outflow (private subscription tracker), Landlord Assistant: Rent (UK landlord app), Overtime Live, and Sun Hours.",
+      "publisher": { "@id": "https://beearmy.github.io/#andy" }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://beearmy.github.io/#andy",
+      "name": "Andy",
+      "url": "https://beearmy.github.io/",
+      "jobTitle": "Indie iOS Developer",
+      "sameAs": ["https://github.com/beearmy"],
+      "brand": { "@type": "Brand", "name": "AndyHQ" }
+    },
+    {
+      "@type": "MobileApplication",
+      "@id": "https://beearmy.github.io/outflow/#app",
+      "name": "Outflow: Subscription Tracker",
+      "alternateName": ["Outflow", "Outflow Subscription Tracker"],
+      "description": "A privacy-first subscription tracker for iPhone. Track every subscription and recurring bill with on-device AI, get renewal reminders before you're charged, and see your total monthly and yearly outgoings — with no bank linking, no account required, and nothing ever leaving your device. Free for up to 5 subscriptions; Pro is a one-time purchase of $4.99 with no recurring fee.",
+      "url": "https://beearmy.github.io/outflow/",
+      "downloadUrl": "https://apps.apple.com/app/id6779691937",
+      "installUrl": "https://apps.apple.com/app/id6779691937",
+      "applicationCategory": "FinanceApplication",
+      "applicationSubCategory": "Subscription Tracker",
+      "operatingSystem": "iOS 26.0 or later",
+      "screenshot": [
+        "https://beearmy.github.io/outflow/ss/1.png",
+        "https://beearmy.github.io/outflow/ss/2.png",
+        "https://beearmy.github.io/outflow/ss/3.png"
+      ],
+      "featureList": [
+        "No bank linking required",
+        "On-device AI Smart Paste from receipts and PDFs",
+        "Renewal reminders and 14-day ahead view",
+        "Monthly and yearly spending totals",
+        "Price-change alerts (rise and fall)",
+        "Siri and App Intents integration",
+        "Data Not Collected — App Store privacy label",
+        "Free up to 5 subscriptions",
+        "Pro one-time purchase $4.99"
+      ],
+      "offers": [
+        {
+          "@type": "Offer",
+          "name": "Free",
+          "price": "0",
+          "priceCurrency": "USD",
+          "description": "Free — up to 5 subscriptions, renewal reminders, totals, Siri"
+        },
+        {
+          "@type": "Offer",
+          "name": "Pro",
+          "price": "4.99",
+          "priceCurrency": "USD",
+          "description": "Pro one-time purchase — unlimited subscriptions, AI Smart Paste, price history, CSV export, custom colours"
+        }
+      ],
+      "author": { "@id": "https://beearmy.github.io/#andy" },
+      "publisher": { "@id": "https://beearmy.github.io/#andy" }
+    },
+    {
+      "@type": "MobileApplication",
+      "@id": "https://beearmy.github.io/landlord/#app",
+      "name": "Landlord Assistant: Rent",
+      "alternateName": ["Landlord Assistant", "Landlord Assistant Rent"],
+      "description": "An iPhone and iPad app for UK landlords to track homes, lodgers, rent records and paperwork in one calm workspace. Data stays on your device with optional encrypted iCloud sync across your own Apple devices. No data collected, no third-party advertising. Free to download; Pro adds unlimited homes and tax pack exports.",
+      "url": "https://beearmy.github.io/landlord/",
+      "downloadUrl": "https://apps.apple.com/app/id6777530304",
+      "installUrl": "https://apps.apple.com/app/id6777530304",
+      "applicationCategory": "FinanceApplication",
+      "applicationSubCategory": "Property Management",
+      "operatingSystem": "iOS 18.0 or later, iPadOS 18.0 or later",
+      "areaServed": "GB",
+      "inLanguage": "en-GB",
+      "featureList": [
+        "Track homes, lodgers and rent records on-device",
+        "Rent rhythm — early, on time, late or missed",
+        "Vault for Right to Rent, gas and electrical safety documents",
+        "Risk Radar for outstanding compliance tasks",
+        "Optional encrypted iCloud sync",
+        "No data collected",
+        "UK landlord compliance checklists",
+        "Tax pack exports (Pro)"
+      ],
+      "offers": [
+        {
+          "@type": "Offer",
+          "name": "Free",
+          "price": "0",
+          "priceCurrency": "GBP",
+          "description": "Free — homes, lodgers, rent records, paperwork"
+        },
+        {
+          "@type": "Offer",
+          "name": "Pro Monthly",
+          "price": "4.99",
+          "priceCurrency": "GBP",
+          "description": "Pro Monthly — unlimited homes, ads removed, tax pack exports"
+        },
+        {
+          "@type": "Offer",
+          "name": "Lifetime Pro",
+          "price": "49.99",
+          "priceCurrency": "GBP",
+          "description": "Lifetime Pro — one-time purchase, unlimited homes, tax pack exports"
+        }
+      ],
+      "author": { "@id": "https://beearmy.github.io/#andy" },
+      "publisher": { "@id": "https://beearmy.github.io/#andy" }
+    }
+  ]
+}
+</script>
 </head>
 <body>
 <div class="wrap">
@@ -25,13 +200,14 @@
   <header class="hero">
     <span class="eyebrow">Indie app studio</span>
     <h1>Focused apps for <span class="hl">real people</span> doing real work.</h1>
-    <p class="lead">I build simple, no-nonsense tools for shift workers, homeowners and everyday life. No subscriptions traps, no dark patterns, no accounts you don't need — just apps that do exactly what they say.</p>
+    <p class="lead">I build simple, no-nonsense tools for shift workers, homeowners and everyday life. No subscription traps, no dark patterns, no accounts you don't need — just apps that do exactly what they say.</p>
   </header>
 
   <div class="section-label">Apps</div>
   <div class="apps">
 
-    <a class="app ol" href="https://overtimelive.app">
+    <!-- Overtime Live — links to own marketing site -->
+    <a class="app ol" href="https://overtimelive.app" rel="noopener">
       <div class="icon">⏱️</div>
       <h3>Overtime Live</h3>
       <p class="tagline">Real-time shift &amp; overtime tracker</p>
@@ -40,7 +216,8 @@
       <span class="go">Visit overtimelive.app <span class="arrow">→</span></span>
     </a>
 
-    <a class="app sh" href="https://sunhours.app">
+    <!-- Sun Hours — links to own marketing site -->
+    <a class="app sh" href="https://sunhours.app" rel="noopener">
       <div class="icon">☀️</div>
       <h3>Sun Hours</h3>
       <p class="tagline">Solar panel kWh calculator</p>
@@ -49,35 +226,76 @@
       <span class="go">Visit sunhours.app <span class="arrow">→</span></span>
     </a>
 
-    <a class="app of" href="/outflow/">
+    <!-- Outflow — restructured as div so App Store link is a real <a> -->
+    <div class="app of" role="region" aria-label="Outflow: Subscription Tracker">
       <div class="icon">💧</div>
-      <h3>Outflow</h3>
-      <p class="tagline">Subscription tracker</p>
-      <p class="desc">Know exactly what you pay for. Track every recurring cost, get reminders before renewals, and see where the money goes — with no bank linking, no account, and nothing ever leaving your iPhone.</p>
-      <div class="tags"><span class="tag">iOS</span><span class="tag">Free + Pro</span><span class="tag">Private by design</span></div>
-      <span class="go">Support &amp; privacy <span class="arrow">→</span></span>
-    </a>
+      <h3>Outflow: Subscription Tracker</h3>
+      <p class="tagline">Privacy-first subscription tracker for iPhone</p>
+      <p class="desc">Know exactly what you pay for. Track every recurring cost with on-device AI, get renewal reminders before you're charged, and see your total spend — with no bank linking, no account, and nothing ever leaving your iPhone.</p>
+      <div class="tags"><span class="tag">iOS</span><span class="tag">Free + Pro $4.99</span><span class="tag">No bank linking</span><span class="tag">Data Not Collected</span></div>
+      <div class="app-dl-row">
+        <a class="app-dl-btn"
+           href="https://apps.apple.com/app/id6779691937"
+           rel="noopener"
+           aria-label="Download Outflow: Subscription Tracker on the App Store">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="white" aria-hidden="true">
+            <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+          </svg>
+          App Store
+        </a>
+        <a class="app-dl-link" href="/outflow/" aria-label="Learn more about Outflow">
+          More info <span aria-hidden="true">→</span>
+        </a>
+      </div>
+    </div>
 
-    <a class="app la" href="/landlord/">
+    <!-- Landlord Assistant — restructured as div so App Store link is a real <a> -->
+    <div class="app la" role="region" aria-label="Landlord Assistant: Rent">
       <div class="icon">🏠</div>
       <h3>Landlord Assistant: Rent</h3>
-      <p class="tagline">Rent &amp; lodger records</p>
-      <p class="desc">Keep landlord, property, lodger, rent and paperwork records on your device — with optional encrypted iCloud sync across your own devices. No third-party advertising, no data selling.</p>
-      <div class="tags"><span class="tag">iOS</span><span class="tag">iCloud sync</span><span class="tag">On-device</span></div>
-      <span class="go">Support &amp; privacy <span class="arrow">→</span></span>
-    </a>
+      <p class="tagline">Rent &amp; lodger records for UK landlords</p>
+      <p class="desc">Keep homes, lodger details, rent records and paperwork in one on-device workspace — with optional encrypted iCloud sync across your own Apple devices. No data collected, no advertising.</p>
+      <div class="tags"><span class="tag">iPhone &amp; iPad</span><span class="tag">Free</span><span class="tag">UK landlords</span><span class="tag">iCloud sync</span></div>
+      <div class="app-dl-row">
+        <a class="app-dl-btn"
+           href="https://apps.apple.com/app/id6777530304"
+           rel="noopener"
+           aria-label="Download Landlord Assistant: Rent on the App Store">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="white" aria-hidden="true">
+            <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+          </svg>
+          App Store
+        </a>
+        <a class="app-dl-link" href="/landlord/" aria-label="Learn more about Landlord Assistant">
+          More info <span aria-hidden="true">→</span>
+        </a>
+      </div>
+    </div>
 
   </div>
 
+  <!--
+    Machine-readable app index — explicit App Store links for crawlers and LLMs.
+    Outflow (subscription tracker, iPhone, no bank linking):
+      https://apps.apple.com/app/id6779691937
+    Landlord Assistant: Rent (UK landlord app, iPhone & iPad):
+      https://apps.apple.com/app/id6777530304
+  -->
   <section class="about">
     <h2>About AndyHQ</h2>
-    <p>AndyHQ is the solo indie studio behind <a href="https://overtimelive.app">Overtime Live</a>, a free real-time overtime tracker for shift workers on iOS and Android — built because over 85% of UK shift workers still track overtime manually, with spreadsheets or paper.</p>
-    <p>The studio also builds <a href="https://sunhours.app">Sun Hours</a>, a free solar panel kWh calculator; <a href="/outflow/">Outflow</a>, a privacy-first subscription tracker; and <a href="/landlord/">Landlord Assistant: Rent</a>, for landlords and lodgers. Every app follows one principle: solve one problem, solve it well, and respect your privacy.</p>
+    <p>AndyHQ is the solo indie studio behind <a href="https://overtimelive.app" rel="noopener">Overtime Live</a>, a real-time overtime tracker for shift workers on iOS and Android, and <a href="https://sunhours.app" rel="noopener">Sun Hours</a>, a free solar panel kWh calculator.</p>
+    <p><strong><a href="/outflow/">Outflow: Subscription Tracker</a></strong> is a privacy-first iPhone app that tracks subscriptions and bills with on-device AI — no bank linking, no account, free up to 5 subscriptions with a one-time Pro unlock at $4.99. <a href="https://apps.apple.com/app/id6779691937" rel="noopener">Download Outflow on the App Store →</a></p>
+    <p><strong><a href="/landlord/">Landlord Assistant: Rent</a></strong> keeps homes, lodgers, rent records and paperwork in one on-device workspace for UK landlords, with optional encrypted iCloud sync. <a href="https://apps.apple.com/app/id6777530304" rel="noopener">Download Landlord Assistant on the App Store →</a></p>
+    <p>Every app follows one principle: solve one problem, solve it well, and respect your privacy.</p>
   </section>
 
   <footer>
     <span>© 2026 AndyHQ</span>
-    <span><a href="https://github.com/beearmy">github.com/beearmy</a></span>
+    <span>
+      <a href="https://github.com/beearmy" rel="noopener">github.com/beearmy</a> ·
+      <a href="/outflow/">Outflow</a> ·
+      <a href="/landlord/">Landlord Assistant</a>
+    </span>
   </footer>
 
 </div>
