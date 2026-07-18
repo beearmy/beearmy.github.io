@@ -1,11 +1,1 @@
 blank_issues_enabled: true
-contact_links:
-  - name: Landlord Assistant: Rent support
-    url: https://beearmy.github.io/landlord/support/
-    about: Open the Landlord support page and create a correctly labelled ticket.
-  - name: Outflow support
-    url: https://beearmy.github.io/outflow/support/
-    about: Open the Outflow support page and create a correctly labelled ticket.
-  - name: AndyHQ apps
-    url: https://beearmy.github.io/
-    about: See all apps and their support & privacy pages.
