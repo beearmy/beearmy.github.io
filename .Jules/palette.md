@@ -1,0 +1,3 @@
+## 2024-07-20 - Adding explicit :focus-visible outlines
+**Learning:** Found that basic interactive elements (buttons, links) lacked clear focus indicators. Browsers have default focus states, but custom CSS often inadvertently suppresses them or they lack sufficient contrast against custom backgrounds. Adding an explicit `:focus-visible` state at the root level of `site.css` ensures all elements that receive focus via keyboard navigation are clearly highlighted.
+**Action:** Always include a global `:focus-visible` rule in the primary stylesheet (e.g., `site.css`) that complements the site's accent color to ensure a consistent and accessible keyboard navigation experience.
