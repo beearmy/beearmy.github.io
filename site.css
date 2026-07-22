@@ -76,3 +76,9 @@ a.app:hover .go .arrow{transform:translateX(3px)}
 footer{border-top:1px solid var(--line);margin-top:40px;padding:26px 0 40px;color:var(--muted);font-size:13.5px;
   display:flex;flex-wrap:wrap;gap:6px 16px;align-items:center;justify-content:space-between}
 footer a{color:var(--muted)}
+
+/* accessibility */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
