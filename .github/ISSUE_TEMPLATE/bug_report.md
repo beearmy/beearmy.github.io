@@ -1,7 +1,8 @@
 ---
 name: Bug report
 about: Something in the app is broken or wrong
-labels: bug, triage
+title: "[Outflow] "
+labels: bug, triage, app:outflow
 ---
 
 **What happened?**
