@@ -1,7 +1,8 @@
 ---
 name: Feature request
 about: An idea or improvement for Outflow
-labels: enhancement, triage
+title: "[Outflow] "
+labels: enhancement, triage, app:outflow
 ---
 
 **What would you like Outflow to do?**
