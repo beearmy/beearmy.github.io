@@ -1,5 +1,5 @@
 ---
-name: Feature request
+name: "Outflow: Feature request"
 about: An idea or improvement for Outflow
 title: "[Outflow] "
 labels: enhancement, triage, app:outflow
