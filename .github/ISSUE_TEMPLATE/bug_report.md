@@ -1,8 +1,7 @@
 ---
-name: "Outflow: Bug report"
+name: Bug report
 about: Something in the app is broken or wrong
-title: "[Outflow] "
-labels: bug, triage, app:outflow
+labels: bug, triage
 ---
 
 **What happened?**
