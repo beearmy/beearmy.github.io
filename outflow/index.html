@@ -885,15 +885,33 @@ h2.of-h2 {
     <h2 class="of-h2">Calm, on the big screen.</h2>
     <p class="of-intro">Outflow now runs beautifully on iPad — sidebar navigation, readable columns, every feature — and installs from the App Store on any Apple silicon Mac. Optional iCloud Backup (to <em>your own</em> iCloud, never our servers) keeps your data with you.</p>
 
-    <figure style="margin:0 0 60px">
-      <img src="/outflow/ss/ipad.png"
-           srcset="/outflow/ss/ipad.png 760w, /outflow/ss/ipad@2x.jpg 1520w"
-           sizes="(max-width: 820px) calc(100vw - 40px), 760px"
-           alt="Outflow on iPad in landscape — sidebar navigation beside monthly outflow, upcoming renewals and the forgotten-subscription check"
-           width="760" height="570" loading="lazy" decoding="async"
-           style="width:100%;max-width:760px;display:block;margin:0 auto;border-radius:22px;box-shadow:0 2px 6px rgba(30,10,70,.1), 0 14px 36px rgba(30,10,70,.14)">
-      <figcaption style="margin-top:10px;font-size:12.5px;font-weight:650;color:var(--muted);text-align:center">Outflow on iPad Pro — same privacy, more room.</figcaption>
-    </figure>
+    <figure class="of-ipad-figure" style="margin:0 0 60px">
+      <!-- Desktop keeps the portrait shot; phones get a landscape one. A tall
+           portrait iPad screenshot in a ~350px column is an illegible slab
+           whatever its resolution, while landscape is wide-and-short and shows
+           the sidebar the copy above describes. Same screen, right shape for
+           each viewport. -->
+      <picture>
+        <source media="(max-width: 820px)"
+                srcset="/outflow/ss/ipad-wide.png 760w, /outflow/ss/ipad-wide@2x.jpg 1520w"
+                sizes="calc(100vw - 40px)"
+                width="760" height="570">
+        <img src="/outflow/ss/ipad.png"
+             srcset="/outflow/ss/ipad.png 760w, /outflow/ss/ipad@2x.jpg 1520w"
+             sizes="760px"
+             alt="Outflow on iPad — sidebar navigation beside monthly outflow, upcoming renewals and the forgotten-subscription check"
+             width="760" height="1013" loading="lazy" decoding="async"
+             style="width:100%;max-width:760px;display:block;margin:0 auto;border-radius:22px;box-shadow:0 2px 6px rgba(30,10,70,.1), 0 14px 36px rgba(30,10,70,.14)">
+      </picture>
+      <style>
+        /* The <img> carries the portrait aspect, so phones need the landscape
+           one declared explicitly or the layout reserves the wrong height and
+           the image looks squashed while it loads. */
+        @media (max-width: 820px) {
+          .of-ipad-figure img { aspect-ratio: 760 / 570; height: auto; }
+        }
+      </style>
+</figure>
 
     <!-- ════════════════════════════════════════════
          COMPARISON
