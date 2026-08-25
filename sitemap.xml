@@ -12,86 +12,10 @@
   </url>
 
   <!-- Outflow: Subscription Tracker -->
-  <url>
-    <loc>https://beearmy.github.io/outflow/</loc>
-    <lastmod>2026-08-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
-    <xhtml:link rel="alternate" hreflang="en-GB" href="https://beearmy.github.io/outflow/"/>
-    <xhtml:link rel="alternate" hreflang="en-US" href="https://beearmy.github.io/outflow/"/>
-    <xhtml:link rel="alternate" hreflang="en"    href="https://beearmy.github.io/outflow/"/>
-    <xhtml:link rel="alternate" hreflang="hi"    href="https://beearmy.github.io/outflow/hi/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://beearmy.github.io/outflow/"/>
-    <image:image>
-      <image:loc>https://beearmy.github.io/outflow/ss/overview.png</image:loc>
-      <image:title>Outflow: Subscription Tracker — overview screen</image:title>
-      <image:caption>Know what you pay — monthly outflow, upcoming renewals and smart insights</image:caption>
-    </image:image>
-    <image:image>
-      <image:loc>https://beearmy.github.io/outflow/ss/scan.png</image:loc>
-      <image:title>Scan a Statement — on-device AI subscription discovery</image:title>
-      <image:caption>Scan a bank statement; on-device AI finds every recurring charge</image:caption>
-    </image:image>
-    <image:image>
-      <image:loc>https://beearmy.github.io/outflow/ss/skip.png</image:loc>
-      <image:title>Skip a payment in Outflow</image:title>
-      <image:caption>Free week? Skip it — the date moves on and your totals drop</image:caption>
-    </image:image>
-    <image:image>
-      <image:loc>https://beearmy.github.io/outflow/ss/widgets.png</image:loc>
-      <image:title>Outflow Home Screen and Lock Screen widgets</image:title>
-      <image:caption>Monthly spend and next renewals, always in view</image:caption>
-    </image:image>
-    <image:image>
-      <image:loc>https://beearmy.github.io/outflow/ss/ipad.png</image:loc>
-      <image:title>Outflow on iPad — sidebar layout</image:title>
-      <image:caption>Sidebar navigation beside monthly outflow, renewals and the forgotten-subscription check</image:caption>
-    </image:image>
-  </url>
 
   <!-- Outflow — Hindi landing page (India) -->
-  <url>
-    <loc>https://beearmy.github.io/outflow/hi/</loc>
-    <lastmod>2026-07-03</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://beearmy.github.io/outflow/"/>
-    <xhtml:link rel="alternate" hreflang="hi" href="https://beearmy.github.io/outflow/hi/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://beearmy.github.io/outflow/"/>
-    <image:image>
-      <image:loc>https://beearmy.github.io/outflow/ss/hi-overview.png</image:loc>
-      <image:title>Outflow — मासिक ख़र्च ₹ में</image:title>
-      <image:caption>जानिए आप कितना चुकाते हैं — हिन्दी में, ₹ में</image:caption>
-    </image:image>
-  </url>
 
   <!-- Outflow — comparison pages -->
-  <url>
-    <loc>https://beearmy.github.io/outflow/vs/rocket-money/</loc>
-    <lastmod>2026-07-03</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://beearmy.github.io/outflow/vs/bobby/</loc>
-    <lastmod>2026-08-16</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <url>
-    <loc>https://beearmy.github.io/outflow/support/</loc>
-    <lastmod>2026-06-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.4</priority>
-  </url>
-
-  <url>
-    <loc>https://beearmy.github.io/outflow/privacy/</loc>
-    <lastmod>2026-06-26</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
-  </url>
 
   <!-- Landlord Assistant: Rent (geo-optimised UK) -->
   <url>
@@ -164,19 +88,7 @@
 
 
   <!-- Outflow: how to find forgotten subscriptions (guide) -->
-  <url>
-    <loc>https://beearmy.github.io/outflow/find-forgotten-subscriptions/</loc>
-    <lastmod>2026-08-16</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
 
   <!-- Outflow: where to cancel any subscription (directory) -->
-  <url>
-    <loc>https://beearmy.github.io/outflow/cancel/</loc>
-    <lastmod>2026-08-16</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
 
 </urlset>
