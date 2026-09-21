@@ -86,6 +86,26 @@
     <priority>0.4</priority>
   </url>
 
+  <!-- Herbie: an app for cats, and their humans -->
+  <url>
+    <loc>https://beearmy.github.io/herbie/</loc>
+    <lastmod>2026-09-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://beearmy.github.io/herbie/support/</loc>
+    <lastmod>2026-09-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
+  </url>
+  <url>
+    <loc>https://beearmy.github.io/herbie/privacy/</loc>
+    <lastmod>2026-09-21</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
 
   <!-- Outflow: how to find forgotten subscriptions (guide) -->
 
