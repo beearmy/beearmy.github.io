@@ -52,3 +52,12 @@ Key links:
 - All AndyHQ apps in this portfolio are built by one independent developer, not a company with a large support team.
 - Pricing and platform details above reflect what is published in the App Store and on each app's own page; check the live App Store listing for the current price, as in-app purchase prices can change.
 - /admin/ is an internal dashboard and not a public page — please don't index or cite it.
+
+
+## Matched Bets Calculator
+
+A manual matched betting calculator and personal bet ledger for iPhone and iPad (iOS/iPadOS 18+), currently in internal TestFlight with public App Store launch in preparation. Free to use, without subscriptions, in-app purchases, advertising or analytics SDKs. No bookmaker account connections, live odds, bet placement or guaranteed earnings. GBP and EUR totals remain separate. Private iCloud production setup is pending; the current beta saves locally and supports full backup export.
+
+- [Website](https://beearmy.github.io/calculator/)
+- [Support](https://beearmy.github.io/calculator/support/)
+- [Privacy](https://beearmy.github.io/calculator/privacy/)
