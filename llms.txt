@@ -61,3 +61,12 @@ A manual matched betting calculator and personal bet ledger for iPhone and iPad 
 - [Website](https://beearmy.github.io/calculator/)
 - [Support](https://beearmy.github.io/calculator/support/)
 - [Privacy](https://beearmy.github.io/calculator/privacy/)
+
+
+## What's next?
+
+An iPhone app (iOS 26 or later) for capturing thoughts, choosing what matters next and letting the rest wait. Thoughts, lists, photos and backups stay on the device; no accounts, analytics, tracking, third-party SDKs or network requests. Optional on-device Apple Intelligence suggestions file thoughts into existing lists.
+
+- [Website](https://beearmy.github.io/whatsnext/)
+- [Support](https://beearmy.github.io/whatsnext/support/)
+- [Privacy](https://beearmy.github.io/whatsnext/privacy/)
